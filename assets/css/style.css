@@ -1,0 +1,10 @@
+@media (min-width: 992px){
+    #case{
+        float: left;
+    }
+}
+@media (min-width: 992px){
+    #date{
+        float: right;
+    }
+}
