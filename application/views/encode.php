@@ -166,19 +166,16 @@
                                                 <label>Province:</label>
                                                 <select class="form-control" name="province" id="province">
                                                     <option>Select Province</option>
-                                                    <?php
-                                                        foreach($province as $row)
-                                                        {
-                                                        echo '<option value="'.$row->province_id.'">'.$row->province_name.'</option>';
-                                                        }
-                                                        ?>
+                                                    <?php foreach($province as $province): ?>
+                                                        <option value="<?php echo $province->province_id; ?>"><?php echo $province->province_name; ?></option>
+                                                    <?php endforeach; ?>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>City:</label>
-                                                <select class="form-control" name="city" id="city">
+                                                <select class="form-control" name="city" id="city" disabled>
                                                     <option value="">Select City</option>
                                                 </select>
                                             </div>
@@ -186,7 +183,7 @@
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <label>Barangay:</label>
-                                                <select class="form-control" name="barangay" id="barangay">
+                                                <select class="form-control" name="barangay" id="barangay" disabled>
                                                     <option value="">Select Barangay</option>
                                                 </select>
                                             </div>
@@ -635,45 +632,51 @@
             });
         });
     </script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/jquery-1.11.1.js"></script>
     <script>
         $(document).ready(function(){
-            $('#province').change(function(){
-                var province_id = $('#province').val();
-  
-                if(province_id != ''){
+            $('#province').on('change', function(){
+                var province_id = $(this).val();
+                if(province_id == ''){
+                    $('#city').prop('disabled', true);
+                }
+                else{
+                    $('#city').prop('disabled', false);
                     $.ajax({
-                        url:"<?php echo base_url(); ?>nurse/fetch_city",
-                        method:"POST",
-                        data:{province_id:province_id},
-                        success:function(data)
-                        {
-                        $('#city').html(data);
-                        $('#barangay').html('<option value="">Select Barangay</option>');
+                        url:"<?php echo base_url() ?>nurse/getcity",
+                        type: "POST",
+                        data: {'province_id' : province_id},
+                        dataType: 'json',
+                        success: function(data){
+                            $('#city').html(data);
+                        },
+                        error: function(){
+                            alert('Error occur ... !!!');
                         }
                     });
                 }
-                else{
-                    $('#city').html('<option value="">Select City</option>');
-                    $('#barangay').html('<option value="">Select Barangay</option>');
-                }
+            });
 
-                $('#city').change(function(){
-                    var city_id = $('#city').val();
-                    if(city_id != ''){
-                        $.ajax({
-                            url:"<?php echo base_url(); ?>nurse/fetch_barangay",
-                            method:"POST",
-                            data:{city_id:city_id},
-                            success:function(data)
-                            {
+            $('#city').on('change', function(){
+                var city_id = $(this).val();
+                if(city_id == ''){
+                    $('#barangay').prop('disabled', true);
+                }
+                else{
+                    $('#barangay').prop('disabled', false);
+                    $.ajax({
+                        url:"<?php echo base_url() ?>nurse/getbarangay",
+                        type: "POST",
+                        data: {'city_id' : city_id},
+                        dataType: 'json',
+                        success: function(data){
                             $('#barangay').html(data);
-                            }
-                        });
-                    }
-                    else{
-                        $('#barangay').html('<option value="">Select Barangay</option>');
-                    }
+                        },
+                        error: function(){
+                            alert('Error occur ... !!!');
+                        }
+                    });
+                }
             });
         });
     </script>
