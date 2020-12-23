@@ -166,8 +166,8 @@
                                                 <label>Province:</label>
                                                 <select class="form-control" name="province" id="province">
                                                     <option>Select Province</option>
-                                                    <?php foreach($province as $province): ?>
-                                                        <option value="<?php echo $province->province_id; ?>"><?php echo $province->province_name; ?></option>
+                                                    <?php foreach($refprovince as $row): ?>
+                                                        <option value="<?php echo $row->provCode; ?>"><?php echo $row->provDesc; ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>
@@ -176,7 +176,7 @@
                                             <div class="form-group">
                                                 <label>City:</label>
                                                 <select class="form-control" name="city" id="city" disabled>
-                                                    <option value="">Select City</option>
+                                                    <option value="">Select City/Municipality</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -461,41 +461,6 @@
     <!-- Light Bootstrap Table Core javascript and methods -->
     <script src="<?php echo base_url() ?>assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 
-    <!-- time picker -->
-    <script src="<?php echo base_url() ?>assets/js/plugins/bootstrap-datetimepicker.js"></script>
-    <script src="<?php echo base_url() ?>assets/js/mdtimepicker.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#timepicker').mdtimepicker();
-        });
-
-        $(document).ready(function(){
-            $('#timepicker1').mdtimepicker();
-        });
-
-        $(document).ready(function(){
-            $('#timepicker2').mdtimepicker();
-        });
-
-        $(document).ready(function(){
-            $('#timepicker3').mdtimepicker();
-        });
-
-        $(document).ready(function(){
-            $('#timepicker4').mdtimepicker();
-        });
-    </script>
-
-
-    <!-- date picker
-    <script>
-        $(document).ready(function(){
-            $("#datepicker1").datepicker({
-                
-            });
-        });
-    </script> -->
-
     <!-- real time date default picker -->
     <script src="<?php echo base_url() ?>assets/js/moment.min.js"></script>
     <script src="<?php echo base_url() ?>assets/js/daterangepicker.js"></script>
@@ -593,51 +558,12 @@
     </script>
 
     <!-- selecting province, city and barangay -->
-    <!-- <script>
-        $(document).ready(function(){
-            $('#province').change(function(){
-                var province_id = $('#province').val();
-                if(country_id != ''){
-                    $.ajax({
-                        url:"<?php echo base_url(); ?>encode/getCity",
-                        method:"POST",
-                        data:{province_id:province_id},
-                        success:function(data){
-                            $('#city').html(data);
-                            $('#barangay').html('<option value="">Select Barangay</option>');
-                        }
-                    });
-                }
-                else{
-                    $('#state').html('<option value="">Select City</option>');
-                    $('#barangay').html('<option value="">Select Barangay</option>');
-                }
-            });
-
-            $('#city').change(function(){
-                var city_id = $('#city').val();
-                if(city_id != ''){
-                    $.ajax({
-                        url:"<?php echo base_url(); ?>encode/getBarangay",
-                        method:"POST",
-                        data:{city_id:city_id},
-                        success:function(data){
-                            $('#barangay').html(data);
-                        }
-                    });
-                }
-                else{
-                    $('#barangay').html('<option value="">Select Barangay</option');
-                }
-            });
-        });
-    </script> -->
     <script src="<?php echo base_url(); ?>assets/js/jquery-1.11.1.js"></script>
     <script>
         $(document).ready(function(){
             $('#province').on('change', function(){
-                var province_id = $(this).val();
-                if(province_id == ''){
+                var provCode = $(this).val();
+                if(provCode == ''){
                     $('#city').prop('disabled', true);
                 }
                 else{
@@ -645,7 +571,7 @@
                     $.ajax({
                         url:"<?php echo base_url() ?>nurse/getcity",
                         type: "POST",
-                        data: {'province_id' : province_id},
+                        data: {'provCode' : provCode},
                         dataType: 'json',
                         success: function(data){
                             $('#city').html(data);
@@ -658,8 +584,8 @@
             });
 
             $('#city').on('change', function(){
-                var city_id = $(this).val();
-                if(city_id == ''){
+                var citymunCode = $(this).val();
+                if(citymunCode == ''){
                     $('#barangay').prop('disabled', true);
                 }
                 else{
@@ -667,7 +593,7 @@
                     $.ajax({
                         url:"<?php echo base_url() ?>nurse/getbarangay",
                         type: "POST",
-                        data: {'city_id' : city_id},
+                        data: {'citymunCode' : citymunCode},
                         dataType: 'json',
                         success: function(data){
                             $('#barangay').html(data);
@@ -678,6 +604,32 @@
                     });
                 }
             });
+        });
+    </script>
+
+    <!-- time picker -->
+    <script src="<?php echo base_url() ?>assets/js/plugins/bootstrap-datetimepicker.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/mdtimepicker.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/mdtimepicker.min"></script>
+    <script>
+        $(document).ready(function(){
+            $('#timepicker').mdtimepicker();
+        });
+
+        $(document).ready(function(){
+            $('#timepicker1').mdtimepicker();
+        });
+
+        $(document).ready(function(){
+            $('#timepicker2').mdtimepicker();
+        });
+
+        $(document).ready(function(){
+            $('#timepicker3').mdtimepicker();
+        });
+
+        $(document).ready(function(){
+            $('#timepicker4').mdtimepicker();
         });
     </script>
 </html>
