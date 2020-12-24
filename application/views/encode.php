@@ -96,7 +96,7 @@
                                 <h4 class="title">Patient's Profile</h4>
                             </div>
                             <div class="content">
-                                <form>
+                                <form autocomplete="off">
                                     <div class="row">
                                         <div class="col-md-3" id="case">
                                             <div class="form-group">
@@ -121,35 +121,67 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Name:</label>
+                                                <label>First Name:</label>
+                                                <input type="text" class="form-control" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Middle Name:</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Last Name:</label>
                                                 <input type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <label>Birthday:</label>
-                                                <input type="date" class="form-control" id="txtbirthdate" name="textbirthdate" onkeyup="getAgeVal(0)" onblur="getAgeVal(0)">
+                                                <label>Suffix:</label>
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">Select Suffix</option>
+                                                    <?php foreach($suffix as $row): ?>
+                                                        <option value="<?php echo $row->id; ?>"><?php echo $row->suffix_name; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Birthday:</label>
+                                                <input type="date" class="form-control" id="txtbirthdate" name="textbirthdate" onkeyup="getAgeVal(0)" onblur="getAgeVal(0)" maxlength="10">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Age:</label>
                                                 <input type="text" class="form-control" name="lblage" id="txtage" autocomplete="off" disabled>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Sex:</label>
                                                 <select class="form-control">
+                                                    <option value="">Select</option>
                                                     <option value="">Male</option>
                                                     <option value="">Female</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Status:</label>
-                                                <input type="text" class="form-control">
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">Select Status</option>
+                                                    <?php foreach($status as $row): ?>
+                                                        <option value="<?php echo $row->id; ?>"><?php echo $row->status_name; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -195,7 +227,10 @@
                                             <div class="form-group">
                                                 <label>Membership:</label>
                                                 <select class="form-control">
-                                                    <option value="">Membership 1</option>
+                                                    <option value="">Select Membership</option>
+                                                    <?php foreach($membership as $row): ?>
+                                                        <option value="<?php echo $row->id; ?>"><?php echo $row->membership_name; ?></option>
+                                                    <?php endforeach; ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -232,13 +267,23 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Surgeon:</label>
-                                                <input type="text" class="form-control">
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">Select Surgeon</option>
+                                                    <?php foreach($surgeon as $row): ?>
+                                                        <option value="<?php echo $row->surgeon_id; ?>"><?php echo $row->surgeon_fname. " " .$row->surgeon_mname. " " .$row->surgeon_lname; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Scrub Staff:</label>
-                                                <input type="text" class="form-control">
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">Select Scrub Staff</option>
+                                                    <?php foreach($scrubstaff as $row): ?>
+                                                        <option value="<?php echo $row->scrubstaff_id; ?>"><?php echo $row->scrubstaff_fname. " " .$row->scrubstaff_mname. " " .$row->scrubstaff_lname; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -253,7 +298,12 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Circulating Staff:</label>
-                                                <input type="text" class="form-control">
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">Select Circulating Staff</option>
+                                                    <?php foreach($circulating_staff as $row): ?>
+                                                        <option value="<?php echo $row->circulatingstaff_id; ?>"><?php echo $row->circulatingstaff_fname. " " .$row->circulatingstaff_mname. " " .$row->circulatingstaff_lname; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -262,7 +312,12 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Anesthesiologist:</label>
-                                                <input type="text" class="form-control">
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">Select Anesthesiologist</option>
+                                                    <?php foreach($anesthesiologist as $row): ?>
+                                                        <option value="<?php echo $row->anes_id; ?>"><?php echo $row->anes_fname. " " .$row->anes_mname. " " .$row->anes_lname; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -295,13 +350,37 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>No. of Sponges (PRE-OP):</label>
-                                                <input type="text" class="form-control">
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option value="">1</option>
+                                                    <option value="">2</option>
+                                                    <option value="">3</option>
+                                                    <option value="">4</option>
+                                                    <option value="">5</option>
+                                                    <option value="">6</option>
+                                                    <option value="">7</option>
+                                                    <option value="">8</option>
+                                                    <option value="">9</option>
+                                                    <option value="">10</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>No. of Sponges (POST-OP):</label>
-                                                <input type="text" class="form-control">
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option value="">1</option>
+                                                    <option value="">2</option>
+                                                    <option value="">3</option>
+                                                    <option value="">4</option>
+                                                    <option value="">5</option>
+                                                    <option value="">6</option>
+                                                    <option value="">7</option>
+                                                    <option value="">8</option>
+                                                    <option value="">9</option>
+                                                    <option value="">10</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -310,13 +389,37 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>No. of Kellys (PRE-OP):</label>
-                                                <input type="text" class="form-control">
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option value="">1</option>
+                                                    <option value="">2</option>
+                                                    <option value="">3</option>
+                                                    <option value="">4</option>
+                                                    <option value="">5</option>
+                                                    <option value="">6</option>
+                                                    <option value="">7</option>
+                                                    <option value="">8</option>
+                                                    <option value="">9</option>
+                                                    <option value="">10</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>No. of Kellys (POST-OP):</label>
-                                                <input type="text" class="form-control">
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option value="">1</option>
+                                                    <option value="">2</option>
+                                                    <option value="">3</option>
+                                                    <option value="">4</option>
+                                                    <option value="">5</option>
+                                                    <option value="">6</option>
+                                                    <option value="">7</option>
+                                                    <option value="">8</option>
+                                                    <option value="">9</option>
+                                                    <option value="">10</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -325,13 +428,37 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>No. of Needles (PRE-OP):</label>
-                                                <input type="text" class="form-control">
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option value="">1</option>
+                                                    <option value="">2</option>
+                                                    <option value="">3</option>
+                                                    <option value="">4</option>
+                                                    <option value="">5</option>
+                                                    <option value="">6</option>
+                                                    <option value="">7</option>
+                                                    <option value="">8</option>
+                                                    <option value="">9</option>
+                                                    <option value="">10</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>No. of Needles (POST-OP):</label>
-                                                <input type="text" class="form-control">
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option value="">1</option>
+                                                    <option value="">2</option>
+                                                    <option value="">3</option>
+                                                    <option value="">4</option>
+                                                    <option value="">5</option>
+                                                    <option value="">6</option>
+                                                    <option value="">7</option>
+                                                    <option value="">8</option>
+                                                    <option value="">9</option>
+                                                    <option value="">10</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -395,6 +522,7 @@
                                             <div class="form-group">
                                                 <label>SEX:</label>
                                                 <select class="form-control">
+                                                    <option value="">Select</option>
                                                     <option value="">Male</option>
                                                     <option value="">Female</option>
                                                 </select>

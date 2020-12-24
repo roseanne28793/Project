@@ -10,6 +10,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         public function encode(){
             $data['refprovince'] = $this->nursemodel->getProvince();
+            $data['status'] = $this->nursemodel->getstatus();
+            $data['suffix'] = $this->nursemodel->getsuffix();
+            $data['membership'] = $this->nursemodel->getmembership();
+            $data['surgeon'] = $this->nursemodel->getsurgeon();
+            $data['scrubstaff'] = $this->nursemodel->getscrubstaff();
+            $data['circulating_staff'] = $this->nursemodel->getcirculatingstaff();
+            $data['anesthesiologist'] = $this->nursemodel->getanesthesiologist();
+
             $this->load->view('encode', $data);
         }
 

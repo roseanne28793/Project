@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 23, 2020 at 11:27 AM
+-- Generation Time: Dec 24, 2020 at 04:27 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -20,6 +20,90 @@ SET time_zone = "+00:00";
 --
 -- Database: `ortech`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `anesthesiologist`
+--
+
+CREATE TABLE `anesthesiologist` (
+  `anes_id` int(11) NOT NULL,
+  `anes_fname` varchar(255) NOT NULL,
+  `anes_mname` varchar(255) NOT NULL,
+  `anes_lname` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `anesthesiologist`
+--
+
+INSERT INTO `anesthesiologist` (`anes_id`, `anes_fname`, `anes_mname`, `anes_lname`) VALUES
+(1, 'Maxpein Zin', 'Moon', 'Del Valle');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `circulating_staff`
+--
+
+CREATE TABLE `circulating_staff` (
+  `circulatingstaff_id` int(11) NOT NULL,
+  `circulatingstaff_fname` varchar(255) NOT NULL,
+  `circulatingstaff_mname` varchar(255) NOT NULL,
+  `circulatingstaff_lname` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `circulating_staff`
+--
+
+INSERT INTO `circulating_staff` (`circulatingstaff_id`, `circulatingstaff_fname`, `circulatingstaff_mname`, `circulatingstaff_lname`) VALUES
+(1, 'Maxwell Laurent', 'Moon', 'Del Valle');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `membership`
+--
+
+CREATE TABLE `membership` (
+  `id` int(11) NOT NULL,
+  `membership_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `membership`
+--
+
+INSERT INTO `membership` (`id`, `membership_name`) VALUES
+(1, 'Membership 1'),
+(2, 'Membership 2'),
+(3, 'Membership 3'),
+(4, 'Membership 4'),
+(5, 'Membership 5');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nurse`
+--
+
+CREATE TABLE `nurse` (
+  `nurse_id` int(11) NOT NULL,
+  `nurse_fname` varchar(255) NOT NULL,
+  `nurse_mname` varchar(255) NOT NULL,
+  `nurse_lname` varchar(255) NOT NULL,
+  `nurse_licenseno` int(11) NOT NULL,
+  `nurse_s2no` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `nurse`
+--
+
+INSERT INTO `nurse` (`nurse_id`, `nurse_fname`, `nurse_mname`, `nurse_lname`, `nurse_licenseno`, `nurse_s2no`) VALUES
+(1, 'Zaimin', 'Yaz', 'Marchessa', 123456, 2468);
 
 -- --------------------------------------------------------
 
@@ -43899,28 +43983,115 @@ INSERT INTO `refprovince` (`id`, `psgcCode`, `provDesc`, `regCode`, `provCode`) 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `scrubstaff`
+--
+
+CREATE TABLE `scrubstaff` (
+  `scrubstaff_id` int(11) NOT NULL,
+  `scrubstaff_fname` varchar(255) NOT NULL,
+  `scrubstaff_mname` varchar(255) NOT NULL,
+  `scrubstaff_lname` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `scrubstaff`
+--
+
+INSERT INTO `scrubstaff` (`scrubstaff_id`, `scrubstaff_fname`, `scrubstaff_mname`, `scrubstaff_lname`) VALUES
+(1, 'Maxrill Won', 'Moon', 'Del Valle');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `status`
 --
 
 CREATE TABLE `status` (
   `id` int(11) NOT NULL,
-  `status` varchar(25) DEFAULT NULL
+  `status_name` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `status`
 --
 
-INSERT INTO `status` (`id`, `status`) VALUES
+INSERT INTO `status` (`id`, `status_name`) VALUES
 (1, 'Single'),
 (2, 'Married'),
 (3, 'Widowed'),
 (4, 'Separated'),
 (5, 'Divorced');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `suffix`
+--
+
+CREATE TABLE `suffix` (
+  `id` int(11) NOT NULL,
+  `suffix_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `suffix`
+--
+
+INSERT INTO `suffix` (`id`, `suffix_name`) VALUES
+(1, 'Sr.'),
+(2, 'Jr.'),
+(3, 'I'),
+(4, 'II'),
+(5, 'III'),
+(6, 'IV');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `surgeon`
+--
+
+CREATE TABLE `surgeon` (
+  `surgeon_id` int(11) NOT NULL,
+  `surgeon_fname` varchar(255) NOT NULL,
+  `surgeon_mname` varchar(255) NOT NULL,
+  `surgeon_lname` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `surgeon`
+--
+
+INSERT INTO `surgeon` (`surgeon_id`, `surgeon_fname`, `surgeon_mname`, `surgeon_lname`) VALUES
+(1, 'Dein Leigh', 'Enrile', 'Echavez');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `anesthesiologist`
+--
+ALTER TABLE `anesthesiologist`
+  ADD PRIMARY KEY (`anes_id`);
+
+--
+-- Indexes for table `circulating_staff`
+--
+ALTER TABLE `circulating_staff`
+  ADD PRIMARY KEY (`circulatingstaff_id`);
+
+--
+-- Indexes for table `membership`
+--
+ALTER TABLE `membership`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `nurse`
+--
+ALTER TABLE `nurse`
+  ADD PRIMARY KEY (`nurse_id`);
 
 --
 -- Indexes for table `refbrgy`
@@ -43941,14 +44112,56 @@ ALTER TABLE `refprovince`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `scrubstaff`
+--
+ALTER TABLE `scrubstaff`
+  ADD PRIMARY KEY (`scrubstaff_id`);
+
+--
 -- Indexes for table `status`
 --
 ALTER TABLE `status`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `suffix`
+--
+ALTER TABLE `suffix`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `surgeon`
+--
+ALTER TABLE `surgeon`
+  ADD PRIMARY KEY (`surgeon_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `anesthesiologist`
+--
+ALTER TABLE `anesthesiologist`
+  MODIFY `anes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `circulating_staff`
+--
+ALTER TABLE `circulating_staff`
+  MODIFY `circulatingstaff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `membership`
+--
+ALTER TABLE `membership`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `nurse`
+--
+ALTER TABLE `nurse`
+  MODIFY `nurse_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `refbrgy`
@@ -43969,10 +44182,28 @@ ALTER TABLE `refprovince`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
+-- AUTO_INCREMENT for table `scrubstaff`
+--
+ALTER TABLE `scrubstaff`
+  MODIFY `scrubstaff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `suffix`
+--
+ALTER TABLE `suffix`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `surgeon`
+--
+ALTER TABLE `surgeon`
+  MODIFY `surgeon_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
