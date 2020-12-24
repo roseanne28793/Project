@@ -57,5 +57,23 @@ class nursemodel extends CI_Model{
         $query7 = $this->db->get('anesthesiologist');
         return $query7->result();
     }
+
+    function savepatient(){
+        $data = array(
+            'case_no' => $this->input->post('case_no'),
+            'room_no' => $this->input->post('room_no'),
+            'case_date' => $this->input->post('case_date'),
+            'first_name' => $this->input->post('fname'),
+            'middle_name' => $this->input->post('mname'),
+            'last_name' => $this->input->post('lname'),
+            'suffix_name' => $this->input->post('suffix_name'),
+            'birthday' => $this->input->post('textbirthdate'),
+            'age' => $this->input->post('lblage'),
+            'sex' => $this->input->post('sex'),
+            'status' => $this->input->post('status'),
+            'address' => $this->input->post('address')
+        );
+        $this->db->insert('patient_info', $data);
+    }
 }
 ?>

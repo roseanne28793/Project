@@ -46,5 +46,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 echo json_encode($pro_select_box);
             }
         }
+
+        public function addpatient(){
+            $this->nursemodel->savepatient();
+            redirect('Nurse/encode');
+        }
     }
 ?>

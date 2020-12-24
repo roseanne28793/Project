@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2020 at 04:27 AM
+-- Generation Time: Dec 24, 2020 at 09:50 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -104,6 +104,43 @@ CREATE TABLE `nurse` (
 
 INSERT INTO `nurse` (`nurse_id`, `nurse_fname`, `nurse_mname`, `nurse_lname`, `nurse_licenseno`, `nurse_s2no`) VALUES
 (1, 'Zaimin', 'Yaz', 'Marchessa', 123456, 2468);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patient_info`
+--
+
+CREATE TABLE `patient_info` (
+  `case_no` int(11) NOT NULL,
+  `room_no` varchar(255) NOT NULL,
+  `case_date` varchar(11) DEFAULT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `middle_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `suffix_name` varchar(255) DEFAULT NULL,
+  `birthday` varchar(11) DEFAULT NULL,
+  `age` varchar(255) DEFAULT NULL,
+  `sex` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `province` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `brgy` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `patient_info`
+--
+
+INSERT INTO `patient_info` (`case_no`, `room_no`, `case_date`, `first_name`, `middle_name`, `last_name`, `suffix_name`, `birthday`, `age`, `sex`, `status`, `address`, `province`, `city`, `brgy`) VALUES
+(0, 'dsfds', '0000-00-00', 'sadas', 'asdsa', 'dasdas', '', '1997-11-10', NULL, '', '1', 'sadadafdaf', '', '', ''),
+(123, 'dfsd', '0000-00-00', 'sdfsdf', 'dsdf', 'fsdfs', '', '2020-12-03', NULL, '', '2', 'Andrea 1, Viscarra Comp.', '', '', ''),
+(1125, 'safas', '24/12/2020', 'dasdas', 'dsada', 'dsadasd', '4', '1998-07-17', NULL, 'Female', '3', 'sdadsadsadsadsa', '', '', ''),
+(1142, 'das', '24/12/2020', 'dsadsa', 'dsadsad', 'dsadsad', '4', '2020-12-01', '3 weeks old', 'Female', '2', 'sdasdasffsf', '', '', ''),
+(1245, 'dasd', '24/12/2020', 'dadsad', 'dasdsa', 'dsadasd', '', '2020-12-12', NULL, 'Female', '4', 'dasdsadsadsadsad', '', '', ''),
+(123456, 'sdads', '24/12/2020', 'dasdasf', 'asfasf', 'fasfasfas', '', '2020-12-16', NULL, '', '2', 'asfasfasf', '', '', ''),
+(2147483647, 'xsdsf', NULL, 'Roseanne San', 'Juan', 'Denisa', '', '1999-06-03', NULL, '', '1', 'Andrea 1, Viscarra Comp.', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -44092,6 +44129,12 @@ ALTER TABLE `membership`
 --
 ALTER TABLE `nurse`
   ADD PRIMARY KEY (`nurse_id`);
+
+--
+-- Indexes for table `patient_info`
+--
+ALTER TABLE `patient_info`
+  ADD PRIMARY KEY (`case_no`);
 
 --
 -- Indexes for table `refbrgy`

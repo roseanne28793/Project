@@ -96,24 +96,24 @@
                                 <h4 class="title">Patient's Profile</h4>
                             </div>
                             <div class="content">
-                                <form autocomplete="off">
+                                <form autocomplete="off" method="post" action="<?php echo site_url("Nurse/addpatient") ?>">
                                     <div class="row">
                                         <div class="col-md-3" id="case">
                                             <div class="form-group">
                                                 <label>Case No.:</label>
-                                                <input type="text" class="form-control" disabled>
+                                                <input type="text" class="form-control" name="case_no">
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <label>Room No.:</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="room_no">
                                             </div>
                                         </div>
                                         <div class="col-md-2" id="date">
                                             <div class="form-group">
                                                 <label>Date:</label>
-                                                <input type="text" class="form-control" id="picker" disabled>
+                                                <input type="text" class="form-control" id="picker" name="case_date">
                                             </div>
                                         </div>
                                     </div>
@@ -122,25 +122,25 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>First Name:</label>
-                                                <input type="text" class="form-control" autocomplete="off">
+                                                <input type="text" class="form-control" autocomplete="off" name="fname">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Middle Name:</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="mname">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Last Name:</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="lname">
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <label>Suffix:</label>
-                                                <select name="" id="" class="form-control">
+                                                <select name="suffix_name" id="" class="form-control">
                                                     <option value="">Select Suffix</option>
                                                     <?php foreach($suffix as $row): ?>
                                                         <option value="<?php echo $row->id; ?>"><?php echo $row->suffix_name; ?></option>
@@ -160,23 +160,23 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Age:</label>
-                                                <input type="text" class="form-control" name="lblage" id="txtage" autocomplete="off" disabled>
+                                                <input type="text" class="form-control" name="lblage" id="txtage">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Sex:</label>
-                                                <select class="form-control">
+                                                <select class="form-control" name="sex">
                                                     <option value="">Select</option>
-                                                    <option value="">Male</option>
-                                                    <option value="">Female</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Status:</label>
-                                                <select name="" id="" class="form-control">
+                                                <select name="status" id="" class="form-control">
                                                     <option value="">Select Status</option>
                                                     <?php foreach($status as $row): ?>
                                                         <option value="<?php echo $row->id; ?>"><?php echo $row->status_name; ?></option>
@@ -190,7 +190,7 @@
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label>Address:</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="address">
                                             </div>
                                         </div>
                                         <div class="col-md-2">
@@ -523,8 +523,8 @@
                                                 <label>SEX:</label>
                                                 <select class="form-control">
                                                     <option value="">Select</option>
-                                                    <option value="">Male</option>
-                                                    <option value="">Female</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -548,7 +548,7 @@
                                         </div>
                                     </div>
 
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Save</button>
+                                    <button type="submit" class="btn btn-info btn-fill pull-right" value="save">Save</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
