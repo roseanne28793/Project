@@ -61,19 +61,36 @@ class nursemodel extends CI_Model{
     function savepatient(){
         $data = array(
             'case_no' => $this->input->post('case_no'),
-            'room_no' => $this->input->post('room_no'),
             'case_date' => $this->input->post('case_date'),
-            'first_name' => $this->input->post('fname'),
-            'middle_name' => $this->input->post('mname'),
-            'last_name' => $this->input->post('lname'),
-            'suffix_name' => $this->input->post('suffix_name'),
-            'birthday' => $this->input->post('textbirthdate'),
-            'age' => $this->input->post('lblage'),
-            'sex' => $this->input->post('sex'),
-            'status' => $this->input->post('status'),
-            'address' => $this->input->post('address')
+            'room_no' => $this->input->post('room_no'),
+            'patient_fname' => $this->input->post('fname'),
+            'patient_mname' => $this->input->post('mname'),
+            'patient_lname' => $this->input->post('lname'),
+            'patient_suffixname' => $this->input->post('suffix_name'),
+            'patient_address' => $this->input->post('address'),
+            'patient_province' => $this->input->post('province'),
+            'patient_city/mun' => $this->input->post('city'),
+            'patient_brgy' => $this->input->post('barangay'),
+            'membership' => $this->input->post('membership'),
+            'patient_age' => $this->input->post('lblage'),
+            'patient_bday' => $this->input->post('textbirthdate'),
+            'patient_sex' => $this->input->post('sex'),
+            'patient_status' => $this->input->post('status'),
+            'patient_trans_in' => $this->input->post('transin'),
+            'patient_trans_out' => $this->input->post('transout')
         );
         $this->db->insert('patient_info', $data);
+
+        $data = array(
+            'case_no' => $this->input->post('case_no'),
+            'opstaff_surgeon' => $this->input->post('surgeon'),
+            'opstaff_asstsurgeon' => $this->input->post('asst_surgeon'),
+            'opstaff_anes' => $this->input->post('anest'),
+            'opstaff_scrubstaff' => $this->input->post('scrubstaff'),
+            'opstaff_cstaff' => $this->input->post('cstaff'),
+            'opstaff_otherpersonnel' => $this->input->post('otherpersonnel')
+        );
+        $this->db->insert('operation_staff', $data);
     }
 }
 ?>

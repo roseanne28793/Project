@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2020 at 09:50 AM
+-- Generation Time: Dec 25, 2020 at 06:17 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -24,11 +24,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `anesthesia`
+--
+
+CREATE TABLE `anesthesia` (
+  `id` int(11) NOT NULL,
+  `anes_typeused` varchar(255) NOT NULL,
+  `anes_caseno` int(11) NOT NULL,
+  `anes_began` varchar(25) NOT NULL,
+  `anes_ended` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `anesthesiologist`
 --
 
 CREATE TABLE `anesthesiologist` (
-  `anes_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `anes_fname` varchar(255) NOT NULL,
   `anes_mname` varchar(255) NOT NULL,
   `anes_lname` varchar(255) NOT NULL
@@ -38,8 +52,22 @@ CREATE TABLE `anesthesiologist` (
 -- Dumping data for table `anesthesiologist`
 --
 
-INSERT INTO `anesthesiologist` (`anes_id`, `anes_fname`, `anes_mname`, `anes_lname`) VALUES
+INSERT INTO `anesthesiologist` (`id`, `anes_fname`, `anes_mname`, `anes_lname`) VALUES
 (1, 'Maxpein Zin', 'Moon', 'Del Valle');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `baby`
+--
+
+CREATE TABLE `baby` (
+  `id` int(11) NOT NULL,
+  `baby_caseno` int(11) NOT NULL,
+  `baby_out` varchar(25) NOT NULL,
+  `baby_apgar` varchar(25) NOT NULL,
+  `baby_sex` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -48,7 +76,7 @@ INSERT INTO `anesthesiologist` (`anes_id`, `anes_fname`, `anes_mname`, `anes_lna
 --
 
 CREATE TABLE `circulating_staff` (
-  `circulatingstaff_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `circulatingstaff_fname` varchar(255) NOT NULL,
   `circulatingstaff_mname` varchar(255) NOT NULL,
   `circulatingstaff_lname` varchar(255) NOT NULL
@@ -58,8 +86,40 @@ CREATE TABLE `circulating_staff` (
 -- Dumping data for table `circulating_staff`
 --
 
-INSERT INTO `circulating_staff` (`circulatingstaff_id`, `circulatingstaff_fname`, `circulatingstaff_mname`, `circulatingstaff_lname`) VALUES
+INSERT INTO `circulating_staff` (`id`, `circulatingstaff_fname`, `circulatingstaff_mname`, `circulatingstaff_lname`) VALUES
 (1, 'Maxwell Laurent', 'Moon', 'Del Valle');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `diagnosis`
+--
+
+CREATE TABLE `diagnosis` (
+  `id` int(11) NOT NULL,
+  `diag_caseno` int(11) NOT NULL,
+  `diag_preop` text NOT NULL,
+  `diag_postop` text NOT NULL,
+  `diag_op_performed` text NOT NULL,
+  `diag_specimens` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inventory`
+--
+
+CREATE TABLE `inventory` (
+  `id` int(11) NOT NULL,
+  `inv_caseno` varchar(255) NOT NULL,
+  `inv_sponges_preop` int(11) NOT NULL,
+  `inv_kellys_preop` int(11) NOT NULL,
+  `inv_needles_preop` int(11) NOT NULL,
+  `inv_sponges_postop` int(11) NOT NULL,
+  `inv_kellys_postop` int(11) NOT NULL,
+  `inv_needles_postop` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -90,7 +150,7 @@ INSERT INTO `membership` (`id`, `membership_name`) VALUES
 --
 
 CREATE TABLE `nurse` (
-  `nurse_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `nurse_fname` varchar(255) NOT NULL,
   `nurse_mname` varchar(255) NOT NULL,
   `nurse_lname` varchar(255) NOT NULL,
@@ -102,8 +162,54 @@ CREATE TABLE `nurse` (
 -- Dumping data for table `nurse`
 --
 
-INSERT INTO `nurse` (`nurse_id`, `nurse_fname`, `nurse_mname`, `nurse_lname`, `nurse_licenseno`, `nurse_s2no`) VALUES
+INSERT INTO `nurse` (`id`, `nurse_fname`, `nurse_mname`, `nurse_lname`, `nurse_licenseno`, `nurse_s2no`) VALUES
 (1, 'Zaimin', 'Yaz', 'Marchessa', 123456, 2468);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `operation`
+--
+
+CREATE TABLE `operation` (
+  `id` int(11) NOT NULL,
+  `op_caseno` int(11) NOT NULL,
+  `date_of_operation` varchar(11) NOT NULL,
+  `op_started` varchar(25) NOT NULL,
+  `op_ended` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `operation_staff`
+--
+
+CREATE TABLE `operation_staff` (
+  `id` int(11) NOT NULL,
+  `case_no` int(11) NOT NULL,
+  `opstaff_surgeon` varchar(255) DEFAULT NULL,
+  `opstaff_asstsurgeon` varchar(255) DEFAULT NULL,
+  `opstaff_anes` varchar(255) DEFAULT NULL,
+  `opstaff_scrubstaff` varchar(255) DEFAULT NULL,
+  `opstaff_cstaff` varchar(255) DEFAULT NULL,
+  `opstaff_otherpersonnel` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `operation_staff`
+--
+
+INSERT INTO `operation_staff` (`id`, `case_no`, `opstaff_surgeon`, `opstaff_asstsurgeon`, `opstaff_anes`, `opstaff_scrubstaff`, `opstaff_cstaff`, `opstaff_otherpersonnel`) VALUES
+(1, 14325, NULL, 'sdasfasf', NULL, NULL, NULL, 'dasfdgsdgdsgsd'),
+(2, 47576, NULL, 'fasfasf', NULL, NULL, NULL, 'sfasfsafasfasfsafsaffsfasfasf'),
+(3, 24548, '1', 'safsafsaf', NULL, '1', NULL, 'fasfafafaffa'),
+(4, 45758, '1', 'dsfsdfsf', NULL, '1', NULL, 'sfsdfsdfsdfs'),
+(5, 5787578, '1', 'sadasd', NULL, '1', NULL, 'asdsadsad'),
+(6, 25458, '1', 'xvv', NULL, '1', '1', 'cdadfadfafsasdas'),
+(7, 4528, '1', 'dasdsad', NULL, '1', '1', 'dsadasdsa'),
+(8, 5576, '1', 'dfsfdsdf', '1', '1', '1', 'fgfdgfdgf'),
+(9, 2147483647, '1', 'sdsad', '1', '1', '1', 'dasdasd');
 
 -- --------------------------------------------------------
 
@@ -112,35 +218,46 @@ INSERT INTO `nurse` (`nurse_id`, `nurse_fname`, `nurse_mname`, `nurse_lname`, `n
 --
 
 CREATE TABLE `patient_info` (
+  `id` int(11) NOT NULL,
   `case_no` int(11) NOT NULL,
-  `room_no` varchar(255) NOT NULL,
-  `case_date` varchar(11) DEFAULT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `middle_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `suffix_name` varchar(255) DEFAULT NULL,
-  `birthday` varchar(11) DEFAULT NULL,
-  `age` varchar(255) DEFAULT NULL,
-  `sex` varchar(255) NOT NULL,
-  `status` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `province` varchar(255) NOT NULL,
-  `city` varchar(255) NOT NULL,
-  `brgy` varchar(255) NOT NULL
+  `case_date` varchar(25) NOT NULL,
+  `room_no` varchar(25) NOT NULL,
+  `patient_fname` varchar(255) NOT NULL,
+  `patient_mname` varchar(255) NOT NULL,
+  `patient_lname` varchar(255) NOT NULL,
+  `patient_suffixname` varchar(255) DEFAULT NULL,
+  `patient_address` varchar(255) NOT NULL,
+  `patient_province` varchar(255) NOT NULL,
+  `patient_city/mun` varchar(255) NOT NULL,
+  `patient_brgy` varchar(255) NOT NULL,
+  `membership` varchar(25) NOT NULL,
+  `patient_age` varchar(255) NOT NULL,
+  `patient_bday` varchar(25) NOT NULL,
+  `patient_sex` varchar(25) NOT NULL,
+  `patient_status` varchar(25) NOT NULL,
+  `patient_trans_in` varchar(255) NOT NULL,
+  `patient_trans_out` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `patient_info`
 --
 
-INSERT INTO `patient_info` (`case_no`, `room_no`, `case_date`, `first_name`, `middle_name`, `last_name`, `suffix_name`, `birthday`, `age`, `sex`, `status`, `address`, `province`, `city`, `brgy`) VALUES
-(0, 'dsfds', '0000-00-00', 'sadas', 'asdsa', 'dasdas', '', '1997-11-10', NULL, '', '1', 'sadadafdaf', '', '', ''),
-(123, 'dfsd', '0000-00-00', 'sdfsdf', 'dsdf', 'fsdfs', '', '2020-12-03', NULL, '', '2', 'Andrea 1, Viscarra Comp.', '', '', ''),
-(1125, 'safas', '24/12/2020', 'dasdas', 'dsada', 'dsadasd', '4', '1998-07-17', NULL, 'Female', '3', 'sdadsadsadsadsa', '', '', ''),
-(1142, 'das', '24/12/2020', 'dsadsa', 'dsadsad', 'dsadsad', '4', '2020-12-01', '3 weeks old', 'Female', '2', 'sdasdasffsf', '', '', ''),
-(1245, 'dasd', '24/12/2020', 'dadsad', 'dasdsa', 'dsadasd', '', '2020-12-12', NULL, 'Female', '4', 'dasdsadsadsadsad', '', '', ''),
-(123456, 'sdads', '24/12/2020', 'dasdasf', 'asfasf', 'fasfasfas', '', '2020-12-16', NULL, '', '2', 'asfasfasf', '', '', ''),
-(2147483647, 'xsdsf', NULL, 'Roseanne San', 'Juan', 'Denisa', '', '1999-06-03', NULL, '', '1', 'Andrea 1, Viscarra Comp.', '', '', '');
+INSERT INTO `patient_info` (`id`, `case_no`, `case_date`, `room_no`, `patient_fname`, `patient_mname`, `patient_lname`, `patient_suffixname`, `patient_address`, `patient_province`, `patient_city/mun`, `patient_brgy`, `membership`, `patient_age`, `patient_bday`, `patient_sex`, `patient_status`, `patient_trans_in`, `patient_trans_out`) VALUES
+(1, 14325, '25/12/2020', '4ASD', 'sdfdsf', 'fafsd', 'fsdfsdf', '', 'asfasgsdgsdg', '1411', '141109', '141109005', '2', '6 years old', '2014-06-25', 'Male', '1', 'safsdgd', '0'),
+(2, 14325, '25/12/2020', '4ASD', 'sdfdsf', 'fafsd', 'fsdfsdf', '', 'asfasgsdgsdg', '1411', '141109', '141109005', '2', '6 years old', '2014-06-25', 'Male', '1', 'safsdgd', '0'),
+(3, 14325, '25/12/2020', '4ASD', 'sdfdsf', 'fafsd', 'fsdfsdf', '', 'asfasgsdgsdg', '1411', '141109', '141109005', '2', '6 years old', '2014-06-25', 'Male', '1', 'safsdgd', '0'),
+(4, 14325, '25/12/2020', '4ASD', 'sdfdsf', 'fafsd', 'fsdfsdf', '', 'asfasgsdgsdg', '1411', '141109', '141109005', '2', '6 years old', '2014-06-25', 'Male', '1', 'safsdgd', '0'),
+(5, 14325, '25/12/2020', '4ASD', 'sdfdsf', 'fafsd', 'fsdfsdf', '', 'asfasgsdgsdg', '1411', '141109', '141109005', '2', '6 years old', '2014-06-25', 'Male', '1', 'safsdgd', '0'),
+(6, 14325, '25/12/2020', '4ASD', 'sdfdsf', 'fafsd', 'fsdfsdf', '', 'asfasgsdgsdg', '1411', '141109', '141109005', '2', '6 years old', '2014-06-25', 'Male', '1', 'safsdgd', '0'),
+(7, 47576, '25/12/2020', 'zXC', 'dasdsad', 'dasdsa', 'dsadad', '3', 'dasffafasf', '1481', '148106', '148106007', '4', '3 years old', '2017-06-25', 'Male', '1', 'sfdasfaf', 'fasfsafsaf'),
+(8, 24548, '25/12/2020', 'dasdsa', 'dsadasd', 'dsadsa', 'asda', '', 'dasdsafsafsafasf', '0878', '087805', '087805011', '3', '17 years old', '2003-06-21', 'Female', '2', 'dasdsa', 'dasfsafsaf'),
+(9, 45758, '25/12/2020', 'fgdgf', 'fsdfsfsd', 'dfsdfsd', 'ffsd', '', 'dsfdsfsd', '0314', '031414', '031414006', '2', '36 years old', '1984-05-02', 'Female', '2', 'dfsfdsf', 'dfdsfsf'),
+(10, 5787578, '25/12/2020', 'sdfds', 'afsdf', 'afadf', 'safasfasf', '', 'dassadasdasd', '0712', '071212', '071212014', '2', '12 years old', '2008-01-09', 'Female', '2', 'adsdas', 'dasdasd'),
+(11, 25458, '25/12/2020', 'fgsfg', 'gdsgs', 'fsdf', 'dsfsfsd', '2', 'zczcvcvcxv', '1411', '141109', '141109004', '3', '13 years old', '2007-05-02', 'Male', '1', 'xzcxzc', 'czxczc'),
+(12, 4528, '25/12/2020', 'fasfa', 'fsaf', 'fsdf', 'fdsfsd', '3', 'dsfdsfsd', '0314', '031414', '031414006', '2', '20 years old', '2000-05-25', 'Male', '', 'adasdas', 'sadasd'),
+(13, 5576, '25/12/2020', 'fdgfd', 'dsadasd', 'dsadsa', 'asda', '2', 'dasdsafsafsafasf', '0878', '087805', '087805005', '1', '11 years old', '2009-05-12', 'Male', '1', 'fgfd', 'sfsdg'),
+(14, 2147483647, '25/12/2020', 'zcdzc', 'Roseanne San', 'Juan', 'Denisa', '3', 'Andrea 1, Viscarra Comp.', '0377', '037705', '037705005', '1', '15 years old', '2005-01-06', 'Female', '1', 'dasd', 'dasds');
 
 -- --------------------------------------------------------
 
@@ -44024,7 +44141,7 @@ INSERT INTO `refprovince` (`id`, `psgcCode`, `provDesc`, `regCode`, `provCode`) 
 --
 
 CREATE TABLE `scrubstaff` (
-  `scrubstaff_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `scrubstaff_fname` varchar(255) NOT NULL,
   `scrubstaff_mname` varchar(255) NOT NULL,
   `scrubstaff_lname` varchar(255) NOT NULL
@@ -44034,7 +44151,7 @@ CREATE TABLE `scrubstaff` (
 -- Dumping data for table `scrubstaff`
 --
 
-INSERT INTO `scrubstaff` (`scrubstaff_id`, `scrubstaff_fname`, `scrubstaff_mname`, `scrubstaff_lname`) VALUES
+INSERT INTO `scrubstaff` (`id`, `scrubstaff_fname`, `scrubstaff_mname`, `scrubstaff_lname`) VALUES
 (1, 'Maxrill Won', 'Moon', 'Del Valle');
 
 -- --------------------------------------------------------
@@ -44089,7 +44206,7 @@ INSERT INTO `suffix` (`id`, `suffix_name`) VALUES
 --
 
 CREATE TABLE `surgeon` (
-  `surgeon_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `surgeon_fname` varchar(255) NOT NULL,
   `surgeon_mname` varchar(255) NOT NULL,
   `surgeon_lname` varchar(255) NOT NULL
@@ -44099,7 +44216,7 @@ CREATE TABLE `surgeon` (
 -- Dumping data for table `surgeon`
 --
 
-INSERT INTO `surgeon` (`surgeon_id`, `surgeon_fname`, `surgeon_mname`, `surgeon_lname`) VALUES
+INSERT INTO `surgeon` (`id`, `surgeon_fname`, `surgeon_mname`, `surgeon_lname`) VALUES
 (1, 'Dein Leigh', 'Enrile', 'Echavez');
 
 --
@@ -44107,16 +44224,40 @@ INSERT INTO `surgeon` (`surgeon_id`, `surgeon_fname`, `surgeon_mname`, `surgeon_
 --
 
 --
+-- Indexes for table `anesthesia`
+--
+ALTER TABLE `anesthesia`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `anesthesiologist`
 --
 ALTER TABLE `anesthesiologist`
-  ADD PRIMARY KEY (`anes_id`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `baby`
+--
+ALTER TABLE `baby`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `circulating_staff`
 --
 ALTER TABLE `circulating_staff`
-  ADD PRIMARY KEY (`circulatingstaff_id`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `diagnosis`
+--
+ALTER TABLE `diagnosis`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `inventory`
+--
+ALTER TABLE `inventory`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `membership`
@@ -44128,13 +44269,25 @@ ALTER TABLE `membership`
 -- Indexes for table `nurse`
 --
 ALTER TABLE `nurse`
-  ADD PRIMARY KEY (`nurse_id`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `operation`
+--
+ALTER TABLE `operation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `operation_staff`
+--
+ALTER TABLE `operation_staff`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `patient_info`
 --
 ALTER TABLE `patient_info`
-  ADD PRIMARY KEY (`case_no`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `refbrgy`
@@ -44158,7 +44311,7 @@ ALTER TABLE `refprovince`
 -- Indexes for table `scrubstaff`
 --
 ALTER TABLE `scrubstaff`
-  ADD PRIMARY KEY (`scrubstaff_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `status`
@@ -44176,23 +44329,47 @@ ALTER TABLE `suffix`
 -- Indexes for table `surgeon`
 --
 ALTER TABLE `surgeon`
-  ADD PRIMARY KEY (`surgeon_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
+-- AUTO_INCREMENT for table `anesthesia`
+--
+ALTER TABLE `anesthesia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `anesthesiologist`
 --
 ALTER TABLE `anesthesiologist`
-  MODIFY `anes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `baby`
+--
+ALTER TABLE `baby`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `circulating_staff`
 --
 ALTER TABLE `circulating_staff`
-  MODIFY `circulatingstaff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `diagnosis`
+--
+ALTER TABLE `diagnosis`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `inventory`
+--
+ALTER TABLE `inventory`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `membership`
@@ -44204,7 +44381,25 @@ ALTER TABLE `membership`
 -- AUTO_INCREMENT for table `nurse`
 --
 ALTER TABLE `nurse`
-  MODIFY `nurse_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `operation`
+--
+ALTER TABLE `operation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `operation_staff`
+--
+ALTER TABLE `operation_staff`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `patient_info`
+--
+ALTER TABLE `patient_info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `refbrgy`
@@ -44228,7 +44423,7 @@ ALTER TABLE `refprovince`
 -- AUTO_INCREMENT for table `scrubstaff`
 --
 ALTER TABLE `scrubstaff`
-  MODIFY `scrubstaff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `status`
@@ -44246,7 +44441,7 @@ ALTER TABLE `suffix`
 -- AUTO_INCREMENT for table `surgeon`
 --
 ALTER TABLE `surgeon`
-  MODIFY `surgeon_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

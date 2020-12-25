@@ -226,7 +226,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Membership:</label>
-                                                <select class="form-control">
+                                                <select class="form-control" name="membership">
                                                     <option value="">Select Membership</option>
                                                     <?php foreach($membership as $row): ?>
                                                         <option value="<?php echo $row->id; ?>"><?php echo $row->membership_name; ?></option>
@@ -237,13 +237,13 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>TRANS-IN:</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="transin">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>TRANS-OUT:</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="transout">
                                             </div>
                                         </div>
                                     </div>
@@ -252,13 +252,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Date of Operation:</label>
-                                                <input type="date" class="form-control" id="datepicker">
+                                                <input type="date" class="form-control" id="datepicker" name="dateoperation">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Type of Anesthesia Used:</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="typeofanes">
                                             </div>
                                         </div>
                                     </div>
@@ -267,10 +267,10 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Surgeon:</label>
-                                                <select name="" id="" class="form-control">
-                                                    <option value="">Select Surgeon</option>
+                                                <select class="form-control" name="surgeon">
+                                                    <option>Select Surgeon</option>
                                                     <?php foreach($surgeon as $row): ?>
-                                                        <option value="<?php echo $row->surgeon_id; ?>"><?php echo $row->surgeon_fname. " " .$row->surgeon_mname. " " .$row->surgeon_lname; ?></option>
+                                                        <option value="<?php echo $row->id; ?>"><?php echo $row->surgeon_fname. " " .$row->surgeon_mname. " " .$row->surgeon_lname; ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>
@@ -278,10 +278,10 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Scrub Staff:</label>
-                                                <select name="" id="" class="form-control">
+                                                <select class="form-control" name="scrubstaff">
                                                     <option value="">Select Scrub Staff</option>
                                                     <?php foreach($scrubstaff as $row): ?>
-                                                        <option value="<?php echo $row->scrubstaff_id; ?>"><?php echo $row->scrubstaff_fname. " " .$row->scrubstaff_mname. " " .$row->scrubstaff_lname; ?></option>
+                                                        <option value="<?php echo $row->id; ?>"><?php echo $row->scrubstaff_fname. " " .$row->scrubstaff_mname. " " .$row->scrubstaff_lname; ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>
@@ -292,16 +292,16 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Assistant Surgeon:</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="asst_surgeon">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Circulating Staff:</label>
-                                                <select name="" id="" class="form-control">
-                                                    <option value="">Select Circulating Staff</option>
+                                                <select class="form-control" name="cstaff">
+                                                    <option>Select Circulating Staff</option>
                                                     <?php foreach($circulating_staff as $row): ?>
-                                                        <option value="<?php echo $row->circulatingstaff_id; ?>"><?php echo $row->circulatingstaff_fname. " " .$row->circulatingstaff_mname. " " .$row->circulatingstaff_lname; ?></option>
+                                                        <option value="<?php echo $row->id; ?>"><?php echo $row->circulatingstaff_fname. " " .$row->circulatingstaff_mname. " " .$row->circulatingstaff_lname; ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>
@@ -312,10 +312,10 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Anesthesiologist:</label>
-                                                <select name="" id="" class="form-control">
+                                                <select class="form-control" name="anest">
                                                     <option value="">Select Anesthesiologist</option>
                                                     <?php foreach($anesthesiologist as $row): ?>
-                                                        <option value="<?php echo $row->anes_id; ?>"><?php echo $row->anes_fname. " " .$row->anes_mname. " " .$row->anes_lname; ?></option>
+                                                        <option value="<?php echo $row->id; ?>"><?php echo $row->anes_fname. " " .$row->anes_mname. " " .$row->anes_lname; ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>
@@ -323,7 +323,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Other Personnel:</label>
-                                                <textarea rows="1" class="form-control"></textarea>
+                                                <textarea rows="1" class="form-control" name="otherpersonnel"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -332,7 +332,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Pre-Operative Diagnosis:</label>
-                                                <textarea rows="2" class="form-control"></textarea>
+                                                <textarea rows="2" class="form-control" name="preop_diag"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -341,7 +341,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Operative Performed:</label>
-                                                <textarea rows="2" class="form-control"></textarea>
+                                                <textarea rows="2" class="form-control" name="operative_performed"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -350,7 +350,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>No. of Sponges (PRE-OP):</label>
-                                                <select name="" id="" class="form-control">
+                                                <select name="sponges_preop" id="" class="form-control">
                                                     <option value="">Select</option>
                                                     <option value="">1</option>
                                                     <option value="">2</option>
@@ -368,7 +368,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>No. of Sponges (POST-OP):</label>
-                                                <select name="" id="" class="form-control">
+                                                <select name="sponges_postop" id="" class="form-control">
                                                     <option value="">Select</option>
                                                     <option value="">1</option>
                                                     <option value="">2</option>
@@ -389,7 +389,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>No. of Kellys (PRE-OP):</label>
-                                                <select name="" id="" class="form-control">
+                                                <select name="kellys_preop" id="" class="form-control">
                                                     <option value="">Select</option>
                                                     <option value="">1</option>
                                                     <option value="">2</option>
@@ -407,7 +407,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>No. of Kellys (POST-OP):</label>
-                                                <select name="" id="" class="form-control">
+                                                <select name="kellys_postop" id="" class="form-control">
                                                     <option value="">Select</option>
                                                     <option value="">1</option>
                                                     <option value="">2</option>
@@ -428,7 +428,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>No. of Needles (PRE-OP):</label>
-                                                <select name="" id="" class="form-control">
+                                                <select name="needles_preop" id="" class="form-control">
                                                     <option value="">Select</option>
                                                     <option value="">1</option>
                                                     <option value="">2</option>
@@ -446,7 +446,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>No. of Needles (POST-OP):</label>
-                                                <select name="" id="" class="form-control">
+                                                <select name="needles_postop" id="" class="form-control">
                                                     <option value="">Select</option>
                                                     <option value="">1</option>
                                                     <option value="">2</option>
@@ -473,13 +473,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Began:</label>
-                                                <input type="text" class="form-control" id="timepicker">
+                                                <input type="text" class="form-control" id="timepicker" name="anes_began">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Ended:</label>
-                                                <input type="text" class="form-control" id="timepicker1">
+                                                <input type="text" class="form-control" id="timepicker1" name="anes_ended">
                                             </div>
                                         </div>
                                     </div>
@@ -494,13 +494,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Started:</label>
-                                                <input type="text" class="form-control" id="timepicker2">
+                                                <input type="text" class="form-control" id="timepicker2" name="op_started">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Ended:</label>
-                                                <input type="text" class="form-control" id="timepicker3">
+                                                <input type="text" class="form-control" id="timepicker3" name="op_ended">
                                             </div>
                                         </div>
                                     </div>
@@ -509,19 +509,19 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Baby Out:</label>
-                                                <input type="text" class="form-control" id="timepicker4">
+                                                <input type="text" class="form-control" id="timepicker4" name="baby_out">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>APGAR:</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="apgar">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>SEX:</label>
-                                                <select class="form-control">
+                                                <select class="form-control" name="baby_sex">
                                                     <option value="">Select</option>
                                                     <option value="Male">Male</option>
                                                     <option value="Female">Female</option>
@@ -534,7 +534,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Post-Operative Diagnosis:</label>
-                                                <textarea rows="2" class="form-control"></textarea>
+                                                <textarea rows="2" class="form-control" name="postop_diag"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -543,7 +543,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Specimen/s forwarded to Laboratory for Examination:</label>
-                                                <textarea rows="2" class="form-control"></textarea>
+                                                <textarea rows="2" class="form-control" name="specimen"></textarea>
                                             </div>
                                         </div>
                                     </div>
