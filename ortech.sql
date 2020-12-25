@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2020 at 06:17 AM
+-- Generation Time: Dec 25, 2020 at 07:35 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -29,11 +29,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `anesthesia` (
   `id` int(11) NOT NULL,
-  `anes_typeused` varchar(255) NOT NULL,
   `anes_caseno` int(11) NOT NULL,
+  `anes_typeused` varchar(255) NOT NULL,
   `anes_began` varchar(25) NOT NULL,
   `anes_ended` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `anesthesia`
+--
+
+INSERT INTO `anesthesia` (`id`, `anes_caseno`, `anes_typeused`, `anes_began`, `anes_ended`) VALUES
+(1, 45276523, 'asdsa', '12:04 PM', '2:04 PM');
 
 -- --------------------------------------------------------
 
@@ -68,6 +75,13 @@ CREATE TABLE `baby` (
   `baby_apgar` varchar(25) NOT NULL,
   `baby_sex` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `baby`
+--
+
+INSERT INTO `baby` (`id`, `baby_caseno`, `baby_out`, `baby_apgar`, `baby_sex`) VALUES
+(1, 45276523, '2:04 PM', 'dsadsad', 'Male');
 
 -- --------------------------------------------------------
 
@@ -104,6 +118,13 @@ CREATE TABLE `diagnosis` (
   `diag_specimens` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `diagnosis`
+--
+
+INSERT INTO `diagnosis` (`id`, `diag_caseno`, `diag_preop`, `diag_postop`, `diag_op_performed`, `diag_specimens`) VALUES
+(1, 45276523, 'dasdsa', 'dsadsad', 'dasdsad', 'sdasdsadsadsa');
+
 -- --------------------------------------------------------
 
 --
@@ -120,6 +141,13 @@ CREATE TABLE `inventory` (
   `inv_kellys_postop` int(11) NOT NULL,
   `inv_needles_postop` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `inventory`
+--
+
+INSERT INTO `inventory` (`id`, `inv_caseno`, `inv_sponges_preop`, `inv_kellys_preop`, `inv_needles_preop`, `inv_sponges_postop`, `inv_kellys_postop`, `inv_needles_postop`) VALUES
+(1, '45276523', 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -179,6 +207,13 @@ CREATE TABLE `operation` (
   `op_ended` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `operation`
+--
+
+INSERT INTO `operation` (`id`, `op_caseno`, `date_of_operation`, `op_started`, `op_ended`) VALUES
+(1, 45276523, '2019-05-08', '2:04 PM', '2:04 PM');
+
 -- --------------------------------------------------------
 
 --
@@ -201,15 +236,7 @@ CREATE TABLE `operation_staff` (
 --
 
 INSERT INTO `operation_staff` (`id`, `case_no`, `opstaff_surgeon`, `opstaff_asstsurgeon`, `opstaff_anes`, `opstaff_scrubstaff`, `opstaff_cstaff`, `opstaff_otherpersonnel`) VALUES
-(1, 14325, NULL, 'sdasfasf', NULL, NULL, NULL, 'dasfdgsdgdsgsd'),
-(2, 47576, NULL, 'fasfasf', NULL, NULL, NULL, 'sfasfsafasfasfsafsaffsfasfasf'),
-(3, 24548, '1', 'safsafsaf', NULL, '1', NULL, 'fasfafafaffa'),
-(4, 45758, '1', 'dsfsdfsf', NULL, '1', NULL, 'sfsdfsdfsdfs'),
-(5, 5787578, '1', 'sadasd', NULL, '1', NULL, 'asdsadsad'),
-(6, 25458, '1', 'xvv', NULL, '1', '1', 'cdadfadfafsasdas'),
-(7, 4528, '1', 'dasdsad', NULL, '1', '1', 'dsadasdsa'),
-(8, 5576, '1', 'dfsfdsdf', '1', '1', '1', 'fgfdgfdgf'),
-(9, 2147483647, '1', 'sdsad', '1', '1', '1', 'dasdasd');
+(10, 45276523, '1', 'sdasdsad', '1', '1', '1', 'dsadsad');
 
 -- --------------------------------------------------------
 
@@ -244,20 +271,7 @@ CREATE TABLE `patient_info` (
 --
 
 INSERT INTO `patient_info` (`id`, `case_no`, `case_date`, `room_no`, `patient_fname`, `patient_mname`, `patient_lname`, `patient_suffixname`, `patient_address`, `patient_province`, `patient_city/mun`, `patient_brgy`, `membership`, `patient_age`, `patient_bday`, `patient_sex`, `patient_status`, `patient_trans_in`, `patient_trans_out`) VALUES
-(1, 14325, '25/12/2020', '4ASD', 'sdfdsf', 'fafsd', 'fsdfsdf', '', 'asfasgsdgsdg', '1411', '141109', '141109005', '2', '6 years old', '2014-06-25', 'Male', '1', 'safsdgd', '0'),
-(2, 14325, '25/12/2020', '4ASD', 'sdfdsf', 'fafsd', 'fsdfsdf', '', 'asfasgsdgsdg', '1411', '141109', '141109005', '2', '6 years old', '2014-06-25', 'Male', '1', 'safsdgd', '0'),
-(3, 14325, '25/12/2020', '4ASD', 'sdfdsf', 'fafsd', 'fsdfsdf', '', 'asfasgsdgsdg', '1411', '141109', '141109005', '2', '6 years old', '2014-06-25', 'Male', '1', 'safsdgd', '0'),
-(4, 14325, '25/12/2020', '4ASD', 'sdfdsf', 'fafsd', 'fsdfsdf', '', 'asfasgsdgsdg', '1411', '141109', '141109005', '2', '6 years old', '2014-06-25', 'Male', '1', 'safsdgd', '0'),
-(5, 14325, '25/12/2020', '4ASD', 'sdfdsf', 'fafsd', 'fsdfsdf', '', 'asfasgsdgsdg', '1411', '141109', '141109005', '2', '6 years old', '2014-06-25', 'Male', '1', 'safsdgd', '0'),
-(6, 14325, '25/12/2020', '4ASD', 'sdfdsf', 'fafsd', 'fsdfsdf', '', 'asfasgsdgsdg', '1411', '141109', '141109005', '2', '6 years old', '2014-06-25', 'Male', '1', 'safsdgd', '0'),
-(7, 47576, '25/12/2020', 'zXC', 'dasdsad', 'dasdsa', 'dsadad', '3', 'dasffafasf', '1481', '148106', '148106007', '4', '3 years old', '2017-06-25', 'Male', '1', 'sfdasfaf', 'fasfsafsaf'),
-(8, 24548, '25/12/2020', 'dasdsa', 'dsadasd', 'dsadsa', 'asda', '', 'dasdsafsafsafasf', '0878', '087805', '087805011', '3', '17 years old', '2003-06-21', 'Female', '2', 'dasdsa', 'dasfsafsaf'),
-(9, 45758, '25/12/2020', 'fgdgf', 'fsdfsfsd', 'dfsdfsd', 'ffsd', '', 'dsfdsfsd', '0314', '031414', '031414006', '2', '36 years old', '1984-05-02', 'Female', '2', 'dfsfdsf', 'dfdsfsf'),
-(10, 5787578, '25/12/2020', 'sdfds', 'afsdf', 'afadf', 'safasfasf', '', 'dassadasdasd', '0712', '071212', '071212014', '2', '12 years old', '2008-01-09', 'Female', '2', 'adsdas', 'dasdasd'),
-(11, 25458, '25/12/2020', 'fgsfg', 'gdsgs', 'fsdf', 'dsfsfsd', '2', 'zczcvcvcxv', '1411', '141109', '141109004', '3', '13 years old', '2007-05-02', 'Male', '1', 'xzcxzc', 'czxczc'),
-(12, 4528, '25/12/2020', 'fasfa', 'fsaf', 'fsdf', 'fdsfsd', '3', 'dsfdsfsd', '0314', '031414', '031414006', '2', '20 years old', '2000-05-25', 'Male', '', 'adasdas', 'sadasd'),
-(13, 5576, '25/12/2020', 'fdgfd', 'dsadasd', 'dsadsa', 'asda', '2', 'dasdsafsafsafasf', '0878', '087805', '087805005', '1', '11 years old', '2009-05-12', 'Male', '1', 'fgfd', 'sfsdg'),
-(14, 2147483647, '25/12/2020', 'zcdzc', 'Roseanne San', 'Juan', 'Denisa', '3', 'Andrea 1, Viscarra Comp.', '0377', '037705', '037705005', '1', '15 years old', '2005-01-06', 'Female', '1', 'dasd', 'dasds');
+(15, 45276523, '25/12/2020', 'A23', 'cdsafa', 'Juandasdas', 'Denisasdasd', '3', 'Andrea 1, Viscarra Comp.', '0878', '087804', '087804014', '3', '27 years old', '1993-05-03', 'Male', '1', 'xcz', 'asdasd');
 
 -- --------------------------------------------------------
 
@@ -44339,7 +44353,7 @@ ALTER TABLE `surgeon`
 -- AUTO_INCREMENT for table `anesthesia`
 --
 ALTER TABLE `anesthesia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `anesthesiologist`
@@ -44351,7 +44365,7 @@ ALTER TABLE `anesthesiologist`
 -- AUTO_INCREMENT for table `baby`
 --
 ALTER TABLE `baby`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `circulating_staff`
@@ -44363,13 +44377,13 @@ ALTER TABLE `circulating_staff`
 -- AUTO_INCREMENT for table `diagnosis`
 --
 ALTER TABLE `diagnosis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `membership`
@@ -44387,19 +44401,19 @@ ALTER TABLE `nurse`
 -- AUTO_INCREMENT for table `operation`
 --
 ALTER TABLE `operation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `operation_staff`
 --
 ALTER TABLE `operation_staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `patient_info`
 --
 ALTER TABLE `patient_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `refbrgy`

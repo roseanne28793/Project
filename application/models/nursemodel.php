@@ -91,6 +91,50 @@ class nursemodel extends CI_Model{
             'opstaff_otherpersonnel' => $this->input->post('otherpersonnel')
         );
         $this->db->insert('operation_staff', $data);
+
+        $data = array(
+            'inv_caseno' => $this->input->post('case_no'),
+            'inv_sponges_preop' => $this->input->post('sponges_preop'),
+            'inv_kellys_preop' => $this->input->post('kellys_preop'),
+            'inv_needles_preop' => $this->input->post('needles_preop'),
+            'inv_needles_postop' => $this->input->post('needles_postop'),
+            'inv_sponges_postop' => $this->input->post('sponges_postop'),
+            'inv_kellys_postop' => $this->input->post('kellys_postop')
+        );
+        $this->db->insert('inventory', $data);
+
+        $data = array(
+            'anes_caseno' => $this->input->post('case_no'),
+            'anes_typeused' => $this->input->post('typeofanes'),
+            'anes_began' => $this->input->post('anes_began'),
+            'anes_ended' => $this->input->post('anes_ended')
+        );
+        $this->db->insert('anesthesia', $data);
+
+        $data = array(
+            'op_caseno' => $this->input->post('case_no'),
+            'date_of_operation' => $this->input->post('dateoperation'),
+            'op_started' => $this->input->post('op_started'),
+            'op_ended' => $this->input->post('op_ended')
+        );
+        $this->db->insert('operation', $data);
+
+        $data = array(
+            'baby_caseno' => $this->input->post('case_no'),
+            'baby_out' => $this->input->post('baby_out'),
+            'baby_apgar' => $this->input->post('apgar'),
+            'baby_sex' => $this->input->post('baby_sex')
+        );
+        $this->db->insert('baby', $data);
+
+        $data = array(
+            'diag_caseno' => $this->input->post('case_no'),
+            'diag_preop' => $this->input->post('preop_diag'),
+            'diag_postop' => $this->input->post('postop_diag'),
+            'diag_op_performed' => $this->input->post('operative_performed'),
+            'diag_specimens' => $this->input->post('specimen')
+        );
+        $this->db->insert('diagnosis', $data);
     }
 }
 ?>
