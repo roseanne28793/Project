@@ -57,7 +57,7 @@
     </div>
 
     <div class="main-panel">
-		<nav class="navbar navbar-default navbar-fixed">
+		<nav class="navbar navbar-ct-red navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
@@ -96,6 +96,7 @@
                                 <h4 class="title">Patient's Profile</h4>
                             </div>
                             <div class="content">
+                                <?php echo validation_errors('<div class="alert alert-danger" role="alert">','</div>'); ?>
                                 <form autocomplete="off" method="post" action="<?php echo site_url("Nurse/addpatient") ?>">
                                     <div class="row">
                                         <div class="col-md-3" id="case">
@@ -197,7 +198,7 @@
                                             <div class="form-group">
                                                 <label>Province:</label>
                                                 <select class="form-control" name="province" id="province">
-                                                    <option>Select Province</option>
+                                                    <option value="">Select Province</option>
                                                     <?php foreach($refprovince as $row): ?>
                                                         <option value="<?php echo $row->provCode; ?>"><?php echo $row->provDesc; ?></option>
                                                     <?php endforeach; ?>

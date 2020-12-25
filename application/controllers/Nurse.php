@@ -48,8 +48,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
         public function addpatient(){
-            $this->nursemodel->savepatient();
-            redirect('Nurse/encode');
+
+            $this->form_validation->set_rules('case_no', 'Case No.', 'required');
+            $this->form_validation->set_rules('room_no', 'Room No.', 'required');
+            $this->form_validation->set_rules('case_date', 'Date', 'required');
+            $this->form_validation->set_rules('fname', 'First Name', 'required');
+            $this->form_validation->set_rules('lname', 'Last Name', 'required');
+            $this->form_validation->set_rules('textbirthdate', 'Birthday', 'required');
+            $this->form_validation->set_rules('lblage', 'Age', 'required');
+            $this->form_validation->set_rules('sex', 'Sex', 'required');
+            $this->form_validation->set_rules('status', 'Status', 'required');
+            $this->form_validation->set_rules('address', 'Address', 'required');
+            $this->form_validation->set_rules('province', 'Province', 'required');
+            $this->form_validation->set_rules('city', 'City', 'required');
+            $this->form_validation->set_rules('barangay', 'Barangay', 'required');
+            $this->form_validation->set_rules('membership', 'Membership', 'required');
+
+            if($this->form_validation->run() == TRUE){
+                echo 'form is validated';
+
+                $this->nursemodel->savepatient();
+                redirect('Nurse/encode');
+            }
+            else{
+                $this->load->view('encode');
+            }
         }
     }
 ?>

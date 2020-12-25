@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2020 at 07:35 AM
+-- Generation Time: Dec 25, 2020 at 11:27 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -34,13 +34,6 @@ CREATE TABLE `anesthesia` (
   `anes_began` varchar(25) NOT NULL,
   `anes_ended` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `anesthesia`
---
-
-INSERT INTO `anesthesia` (`id`, `anes_caseno`, `anes_typeused`, `anes_began`, `anes_ended`) VALUES
-(1, 45276523, 'asdsa', '12:04 PM', '2:04 PM');
 
 -- --------------------------------------------------------
 
@@ -75,13 +68,6 @@ CREATE TABLE `baby` (
   `baby_apgar` varchar(25) NOT NULL,
   `baby_sex` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `baby`
---
-
-INSERT INTO `baby` (`id`, `baby_caseno`, `baby_out`, `baby_apgar`, `baby_sex`) VALUES
-(1, 45276523, '2:04 PM', 'dsadsad', 'Male');
 
 -- --------------------------------------------------------
 
@@ -118,13 +104,6 @@ CREATE TABLE `diagnosis` (
   `diag_specimens` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `diagnosis`
---
-
-INSERT INTO `diagnosis` (`id`, `diag_caseno`, `diag_preop`, `diag_postop`, `diag_op_performed`, `diag_specimens`) VALUES
-(1, 45276523, 'dasdsa', 'dsadsad', 'dasdsad', 'sdasdsadsadsa');
-
 -- --------------------------------------------------------
 
 --
@@ -141,13 +120,6 @@ CREATE TABLE `inventory` (
   `inv_kellys_postop` int(11) NOT NULL,
   `inv_needles_postop` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `inventory`
---
-
-INSERT INTO `inventory` (`id`, `inv_caseno`, `inv_sponges_preop`, `inv_kellys_preop`, `inv_needles_preop`, `inv_sponges_postop`, `inv_kellys_postop`, `inv_needles_postop`) VALUES
-(1, '45276523', 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -207,13 +179,6 @@ CREATE TABLE `operation` (
   `op_ended` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `operation`
---
-
-INSERT INTO `operation` (`id`, `op_caseno`, `date_of_operation`, `op_started`, `op_ended`) VALUES
-(1, 45276523, '2019-05-08', '2:04 PM', '2:04 PM');
-
 -- --------------------------------------------------------
 
 --
@@ -236,7 +201,7 @@ CREATE TABLE `operation_staff` (
 --
 
 INSERT INTO `operation_staff` (`id`, `case_no`, `opstaff_surgeon`, `opstaff_asstsurgeon`, `opstaff_anes`, `opstaff_scrubstaff`, `opstaff_cstaff`, `opstaff_otherpersonnel`) VALUES
-(10, 45276523, '1', 'sdasdsad', '1', '1', '1', 'dsadsad');
+(1, 123456, 'Max', 'Max', 'Max', 'Max', 'Max', 'Max');
 
 -- --------------------------------------------------------
 
@@ -255,8 +220,8 @@ CREATE TABLE `patient_info` (
   `patient_suffixname` varchar(255) DEFAULT NULL,
   `patient_address` varchar(255) NOT NULL,
   `patient_province` varchar(255) NOT NULL,
-  `patient_city/mun` varchar(255) NOT NULL,
-  `patient_brgy` varchar(255) NOT NULL,
+  `patient_city/mun` varchar(255) DEFAULT NULL,
+  `patient_brgy` varchar(255) DEFAULT NULL,
   `membership` varchar(25) NOT NULL,
   `patient_age` varchar(255) NOT NULL,
   `patient_bday` varchar(25) NOT NULL,
@@ -271,7 +236,7 @@ CREATE TABLE `patient_info` (
 --
 
 INSERT INTO `patient_info` (`id`, `case_no`, `case_date`, `room_no`, `patient_fname`, `patient_mname`, `patient_lname`, `patient_suffixname`, `patient_address`, `patient_province`, `patient_city/mun`, `patient_brgy`, `membership`, `patient_age`, `patient_bday`, `patient_sex`, `patient_status`, `patient_trans_in`, `patient_trans_out`) VALUES
-(15, 45276523, '25/12/2020', 'A23', 'cdsafa', 'Juandasdas', 'Denisasdasd', '3', 'Andrea 1, Viscarra Comp.', '0878', '087804', '087804014', '3', '27 years old', '1993-05-03', 'Male', '1', 'xcz', 'asdasd');
+(1, 123456, '25/12/2020', 'AB2', 'Max', 'Max', 'Max', NULL, 'Andrea 1', 'CAVITE', 'Bacoor', 'Panapaan V', '1', '23 yrs old', '1999-06-03', 'Female', 'Single', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -44353,7 +44318,7 @@ ALTER TABLE `surgeon`
 -- AUTO_INCREMENT for table `anesthesia`
 --
 ALTER TABLE `anesthesia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `anesthesiologist`
@@ -44365,7 +44330,7 @@ ALTER TABLE `anesthesiologist`
 -- AUTO_INCREMENT for table `baby`
 --
 ALTER TABLE `baby`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `circulating_staff`
@@ -44377,13 +44342,13 @@ ALTER TABLE `circulating_staff`
 -- AUTO_INCREMENT for table `diagnosis`
 --
 ALTER TABLE `diagnosis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `membership`
@@ -44401,19 +44366,19 @@ ALTER TABLE `nurse`
 -- AUTO_INCREMENT for table `operation`
 --
 ALTER TABLE `operation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `operation_staff`
 --
 ALTER TABLE `operation_staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `patient_info`
 --
 ALTER TABLE `patient_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `refbrgy`
