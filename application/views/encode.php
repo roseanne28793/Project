@@ -9,7 +9,7 @@
 	<title>Encode</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width"/>
 
 
     <!-- Bootstrap core CSS     -->
@@ -47,9 +47,15 @@
 
             <ul class="nav">
                 <li class="active">
-                    <a href="user.html">
+                    <a href="<?php echo site_url("nurse/encode"); ?>">
                         <i class="pe-7s-user"></i>
                         <p>Patient's Profile</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo site_url("nurse/ortech"); ?>">
+                        <i class="pe-7s-note2"></i>
+                        <p>Operative Technique and Finding Creation</p>
                     </a>
                 </li>
             </ul>
@@ -66,7 +72,6 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">User</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -97,6 +102,7 @@
                             </div>
                             <div class="content">
                                 <?php echo validation_errors('<div class="alert alert-danger" role="alert">','</div>'); ?>
+                                <?php echo $this->session->flashdata('form'); ?>
                                 <form autocomplete="off" method="post" action="<?php echo site_url("Nurse/addpatient") ?>">
                                     <div class="row">
                                         <div class="col-md-3" id="case">
@@ -558,16 +564,7 @@
                 </div>
             </div>
         </div>
-
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> <a>St. Dominic Medical Center</a>
-                </p>
-            </div>
-        </footer>
-
+        <?php include_once "include/footer.php" ?>
     </div>
 </div>
 

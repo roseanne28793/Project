@@ -136,5 +136,11 @@ class nursemodel extends CI_Model{
         );
         $this->db->insert('diagnosis', $data);
     }
+
+    public function getpatientinfo(){
+        $this->db->order_by('patient_fname', 'ASC');
+        $query8 = $this->db->get_where('patient_info');
+        return $query8->result();
+    }
 }
 ?>

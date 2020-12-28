@@ -19,6 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $data['anesthesiologist'] = $this->nursemodel->getanesthesiologist();
 
             $this->load->view('encode', $data);
+            $this->load->view('include/footer');
         }
 
         public function getcity(){
@@ -71,8 +72,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 redirect('Nurse/encode');
             }
             else{
+                $this->session->set_flashdata('form', '<div class="alert alert-success">Patient Information Submission Successful.</div>');
                 $this->load->view('encode');
             }
+        }
+
+        public function ortech(){
+            $data['patient_info'] = $this->nursemodel->getpatientinfo();
+
+            $this->load->view('ortech', $data);
         }
     }
 ?>
