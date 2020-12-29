@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2020 at 11:27 AM
+-- Generation Time: Dec 29, 2020 at 03:10 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -34,6 +34,13 @@ CREATE TABLE `anesthesia` (
   `anes_began` varchar(25) NOT NULL,
   `anes_ended` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `anesthesia`
+--
+
+INSERT INTO `anesthesia` (`id`, `anes_caseno`, `anes_typeused`, `anes_began`, `anes_ended`) VALUES
+(1, 5646, 'fsasaf', 'dsadsad', 'dsad');
 
 -- --------------------------------------------------------
 
@@ -68,6 +75,35 @@ CREATE TABLE `baby` (
   `baby_apgar` varchar(25) NOT NULL,
   `baby_sex` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `baby`
+--
+
+INSERT INTO `baby` (`id`, `baby_caseno`, `baby_out`, `baby_apgar`, `baby_sex`) VALUES
+(1, 4566, 'safdsf', 'dasdsaf', 'female');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chole_ioc_t_tube`
+--
+
+CREATE TABLE `chole_ioc_t_tube` (
+  `id` int(11) NOT NULL,
+  `subcategory_id` int(11) NOT NULL,
+  `first_paragraph` text NOT NULL,
+  `2nd_paragraph` text NOT NULL,
+  `3rd_paragraph` text NOT NULL,
+  `4th_paragraph` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `chole_ioc_t_tube`
+--
+
+INSERT INTO `chole_ioc_t_tube` (`id`, `subcategory_id`, `first_paragraph`, `2nd_paragraph`, `3rd_paragraph`, `4th_paragraph`) VALUES
+(1, 1, 'Obstructive Jaundice prob 2o toCholedochocystolithiasis\r\nOpenCholecystectomy, Intraoperative TranscysticCholangiogram possible CBDE\r\nObstructive Jaundice 2o to Chronic Choledochocystolithiasis\r\nOpenCholecystectomy, Intraoperative TranscysticCholangiogram, Choledochotomy, CBDE, Choledochostomy, JP Drain', 'Patient supine under CSEA\r\nAsepsis & antisepsis\r\nSterile drapes\r\nRight subcostal incision done carried from the skin up to the peritoneum\r\n', 'OR Findings: liver grossly normal. Distended gallbladder (bilobed) with thickened walls measuring 12.5cm x 5.0cm. (+)round blackish brown stone  approx. 1.5cm in diameter at the Hartmann’s pouch, Cystic duct dilated approx. 1.5cm in diameter, common bile duct not dilated approx. 0.5cm in diameter, w/  palpable stones:round blackish brown stone lodged at the mid CBD measuring approx.. 1.5cm in diameter', 'Cystic artery ligated\r\nCystic duct identified &temporarily ligated using silk 2-0\r\nSmall incision placed over proximal portion of cystic duct\r\nFrench 5 feeding tube inserted through cystic duct incision up to the cystic duct & CBD junction\r\nUltravist dye infused then cholangiogram taken and results noted\r\nCystic duct suture ligated using silk 2-0\r\nCholecystectomy done\r\nCholedochotomy done \r\nFlushing done with sterile saline solution done\r\nFrench 20 T-tube inserted and anchored at the CBD\r\nJP Drain applied and anchored\r\nHemostasis\r\nClosure by layers:	Peritoneum, continuous using Vicryl 2-0\r\nFascia, figure of 8 using Vicryl 2-0\r\nSkin, subcuticular using Vicryl 4-0\r\nSterile dressing applied\r\nPatient tolerated procedure well\r\n');
 
 -- --------------------------------------------------------
 
@@ -104,6 +140,13 @@ CREATE TABLE `diagnosis` (
   `diag_specimens` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `diagnosis`
+--
+
+INSERT INTO `diagnosis` (`id`, `diag_caseno`, `diag_preop`, `diag_postop`, `diag_op_performed`, `diag_specimens`) VALUES
+(1, 45254, 'khjghjf', 'gdfhf', 'dgfdg', 'gdfgdfgdf');
+
 -- --------------------------------------------------------
 
 --
@@ -120,6 +163,13 @@ CREATE TABLE `inventory` (
   `inv_kellys_postop` int(11) NOT NULL,
   `inv_needles_postop` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `inventory`
+--
+
+INSERT INTO `inventory` (`id`, `inv_caseno`, `inv_sponges_preop`, `inv_kellys_preop`, `inv_needles_preop`, `inv_sponges_postop`, `inv_kellys_postop`, `inv_needles_postop`) VALUES
+(1, '245364', 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -179,6 +229,13 @@ CREATE TABLE `operation` (
   `op_ended` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `operation`
+--
+
+INSERT INTO `operation` (`id`, `op_caseno`, `date_of_operation`, `op_started`, `op_ended`) VALUES
+(1, 15151, 'fsdfdg', 'fdsgd', 'gdsgds');
+
 -- --------------------------------------------------------
 
 --
@@ -202,6 +259,46 @@ CREATE TABLE `operation_staff` (
 
 INSERT INTO `operation_staff` (`id`, `case_no`, `opstaff_surgeon`, `opstaff_asstsurgeon`, `opstaff_anes`, `opstaff_scrubstaff`, `opstaff_cstaff`, `opstaff_otherpersonnel`) VALUES
 (1, 123456, 'Max', 'Max', 'Max', 'Max', 'Max', 'Max');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orcategory`
+--
+
+CREATE TABLE `orcategory` (
+  `id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `category_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orcategory`
+--
+
+INSERT INTO `orcategory` (`id`, `category_id`, `category_name`) VALUES
+(1, 1, 'Chole IOC'),
+(2, 2, 'Colonoscopy');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orsub_category`
+--
+
+CREATE TABLE `orsub_category` (
+  `id` int(11) NOT NULL,
+  `subcategory_id` int(11) NOT NULL,
+  `sub_categoryname` varchar(255) NOT NULL,
+  `category_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orsub_category`
+--
+
+INSERT INTO `orsub_category` (`id`, `subcategory_id`, `sub_categoryname`, `category_id`) VALUES
+(1, 1, 'Chole IOC T-tube', 1);
 
 -- --------------------------------------------------------
 
@@ -236,7 +333,8 @@ CREATE TABLE `patient_info` (
 --
 
 INSERT INTO `patient_info` (`id`, `case_no`, `case_date`, `room_no`, `patient_fname`, `patient_mname`, `patient_lname`, `patient_suffixname`, `patient_address`, `patient_province`, `patient_city/mun`, `patient_brgy`, `membership`, `patient_age`, `patient_bday`, `patient_sex`, `patient_status`, `patient_trans_in`, `patient_trans_out`) VALUES
-(1, 123456, '25/12/2020', 'AB2', 'Max', 'Max', 'Max', NULL, 'Andrea 1', 'CAVITE', 'Bacoor', 'Panapaan V', '1', '23 yrs old', '1999-06-03', 'Female', 'Single', '', NULL);
+(1, 123456, '25/12/2020', 'AB2', 'Max', 'Max', 'Max', NULL, 'Andrea 1', 'CAVITE', 'Bacoor', 'Panapaan V', '1', '23 yrs old', '1999-06-03', 'Female', 'Single', '', NULL),
+(19, 425585245, '', '', 'Anne', '', '', NULL, '', '', NULL, NULL, '', '', '', '', '', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -44221,6 +44319,12 @@ ALTER TABLE `baby`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `chole_ioc_t_tube`
+--
+ALTER TABLE `chole_ioc_t_tube`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `circulating_staff`
 --
 ALTER TABLE `circulating_staff`
@@ -44260,6 +44364,18 @@ ALTER TABLE `operation`
 -- Indexes for table `operation_staff`
 --
 ALTER TABLE `operation_staff`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orcategory`
+--
+ALTER TABLE `orcategory`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orsub_category`
+--
+ALTER TABLE `orsub_category`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -44318,7 +44434,7 @@ ALTER TABLE `surgeon`
 -- AUTO_INCREMENT for table `anesthesia`
 --
 ALTER TABLE `anesthesia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `anesthesiologist`
@@ -44330,7 +44446,13 @@ ALTER TABLE `anesthesiologist`
 -- AUTO_INCREMENT for table `baby`
 --
 ALTER TABLE `baby`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `chole_ioc_t_tube`
+--
+ALTER TABLE `chole_ioc_t_tube`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `circulating_staff`
@@ -44342,13 +44464,13 @@ ALTER TABLE `circulating_staff`
 -- AUTO_INCREMENT for table `diagnosis`
 --
 ALTER TABLE `diagnosis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `membership`
@@ -44366,7 +44488,7 @@ ALTER TABLE `nurse`
 -- AUTO_INCREMENT for table `operation`
 --
 ALTER TABLE `operation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `operation_staff`
@@ -44375,10 +44497,22 @@ ALTER TABLE `operation_staff`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `orcategory`
+--
+ALTER TABLE `orcategory`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `orsub_category`
+--
+ALTER TABLE `orsub_category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `patient_info`
 --
 ALTER TABLE `patient_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `refbrgy`

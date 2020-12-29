@@ -1,1 +1,1 @@
-<h1>My Index view</h1>
+<h1>Index View</h1>

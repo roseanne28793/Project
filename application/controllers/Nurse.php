@@ -78,9 +78,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
         public function ortech(){
-            $data['patient_info'] = $this->nursemodel->getpatientinfo();
+            $data['patient_info'] = $this->nursemodel->getPatient();
+            $data['orcategory'] = $this->nursemodel->getorcategory();
+            // $data['chole_ioc_t_tube'] = $this->nursemodel->getorparagraph();
 
             $this->load->view('ortech', $data);
+        }
+
+        public function getsubcategory(){
+            $category_id = $this->input->post('category_id');
+            $orsub_category = $this->nursemodel->getorsubcategory($category_id);
+            if(count($orsub_category)>0){
+                $pro_select_box = '';
+                $pro_select_box .= '<option value="">Select OR Sub-Category</option>';
+                foreach ($orsub_category as $row){
+                    $pro_select_box .='<option value="'.$row->subcategory_id.'">'.$row->sub_categoryname.'</option>';
+                }
+                echo json_encode($pro_select_box);
+            }
+        }
+
+        public function getparagraph(){
+            $subcategory_id = $this->input->post('subcategory_id');
+            $chole_ioc_t_tube= $this->nursemodel->getparagraph_query($subcategory_id);
+            if(count($chole_ioc_t_tube)>0){
+                $pro_select_box = '';
+                $pro_select_box .= '<textarea name="1st_paragraph" id="1st_paragraph" rows="10" class="form-control">No data</textarea>';
+                foreach ($chole_ioc_t_tube as $row){
+                    $pro_select_box .='<textarea name="1st_paragraph" id="1st_paragraph" rows="10" class="form-control">'.$row->first_paragraph.'</textarea>';
+                }
+                echo json_encode($pro_select_box);
+            }
         }
     }
 ?>

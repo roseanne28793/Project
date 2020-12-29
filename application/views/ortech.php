@@ -85,7 +85,6 @@
                                 <p>Log out</p>
                             </a>
                         </li>
-						<li class="separator hidden-lg hidden-md"></li>
                     </ul>
                 </div>
             </div>
@@ -103,92 +102,78 @@
                                 <table class="table table-hover table-striped">
                                     <thead>
                                     	<th>Case No.</th>
-                                    	<th>Name</th>
-                                        <th>Add OR-Tech</th>
-                                        <th>Edit Patient Info</th>
-                                        <th>Delete</th>
+                                        <th>Name</th>
+                                        <th>OR Tech</th>
+                                        <th>Action</th>
                                     </thead>
+                                    <?php foreach($patient_info as $row): ?>
                                     <tbody>
-                                        <?php foreach($patient_info as $row): ?>
                                         <tr>
-                                            <td><?php echo $row->case_no; ?></td>
-                                            <td><?php echo $row->patient_fname. " " .$row->patient_mname. " " .$row->patient_lname. " " .$row->patient_suffixname; ?></td>
-                                            <td><a class="btn btn-primary" href="">Add</a></td>
-                                            <td><a class="btn btn-primary" href="">Edit</a></td>
-                                            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Launch demo modal</button></td>
+                                            <td value="<?php echo $row->id ?>"><?php echo $row->case_no; ?></td>
+                                            <td><?php echo $row->patient_fname." ".$row->patient_mname." ".$row->patient_lname; ?></td>
+                                            <td>
+                                                <button type="button" class="btn btn-success editbtn" data-toggle="modal" data-target="#exampleModal">Add ORTech</button>
+                                                <button class="btn btn-danger">Delete</button>
+                                            </td>
+                                            <td></td>
                                         </tr>
-                                        <?php endforeach; ?>
                                     </tbody>
+                                    <?php endforeach; ?>
                                 </table>
                             </div>
                         </div>
-                            <!-- Modal -->
-                            <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    ...
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                                </div>
-                            </div>
-                            </div> -->
-                        <!--  -->
                     </div>
                 </div>
             </div>
         </div>
-
         <?php include_once "include/footer.php" ?>
-        <!-- Modal -->
-        <!-- Button trigger modal -->
-        
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-            </div>
-        </div>
-        </div>
-        <!-- end modal -->
     </div>
 </div>
-
-
+<!-- Modal -->
+<div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add ORTech</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="">
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Case No.:</label>
+                <input type="text" class="form-control" name="case_no" id="case_no">
+            </div>
+            <div class="form-group">
+                <label>OR Category:</label>
+                <select class="form-control" name="or_category" id="or_category">
+                    <option value="">Select OR Category</option>
+                        <?php foreach($orcategory as $row): ?>
+                            <option value="<?php echo $row->category_id; ?>"><?php echo $row->category_name; ?></option>
+                        <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>OR Sub-Category:</label>
+                <select class="form-control" name="or_subcategory" id="or_subcategory" disabled>
+                    <option value="">Select OR Sub-Category</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <textarea name="1st_paragraph" id="1st_paragraph" rows="10" class="form-control" disabled></textarea>
+            </div>
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of modal -->
 </body>
-
-    <script>
-        $('#exampleModal').on('shown.bs.modal', function () {
-            $('#exampleModalLabel').trigger('focus')
-        });
-    </script>
-
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
 
     <!--   Core JS Files   -->
     <script src="<?php echo base_url() ?>assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
@@ -200,9 +185,72 @@
     <!--  Notifications Plugin    -->
     <script src="<?php echo base_url() ?>assets/js/bootstrap-notify.js"></script>
 
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
     <script src="<?php echo base_url() ?>assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.editbtn').on('click', function(){
+                $('#editmodal').modal('show');
+                    $tr = $(this).closest('tr');
+                    
+                    var data = $tr.children("td").map(function(){
+                        return $(this).text();
+                    }).get();
+
+                    console.log(data);
+
+                    $('#case_no').val(data[0]);
+            });
+        });
+    </script>
+
+    <!-- <script src="<?php echo base_url(); ?>assets/js/jquery-1.11.1.js"></script> -->
+    <script>
+        $(document).ready(function(){
+            $('#or_category').on('change', function(){
+                var category_id = $(this).val();
+                if(category_id == ''){
+                    $('#or_subcategory').prop('disabled', true);
+                }
+                else{
+                    $('#or_subcategory').prop('disabled', false);
+                    $.ajax({
+                        url:"<?php echo base_url() ?>nurse/getsubcategory",
+                        type: "POST",
+                        data: {'category_id' : category_id},
+                        dataType: 'json',
+                        success: function(data){
+                            $('#or_subcategory').html(data);
+                        },
+                        error: function(){
+                            alert('Error occur ... !!!');
+                        }
+                    });
+                }
+            });
+
+            $('#or_subcategory').on('change', function(){
+                var subcategory_id = $(this).val();
+                if(subcategory_id == ''){
+                    $('#1st_paragraph').prop('disabled', true);
+                }
+                else{
+                    $('#1st_paragraph').prop('disabled', false);
+                    $.ajax({
+                        url:"<?php echo base_url() ?>nurse/getparagraph",
+                        type: "POST",
+                        data: {'subcategory_id' : subcategory_id},
+                        dataType: 'json',
+                        success: function(response){
+                            $('#1st_paragraph').html(data);
+                        },
+                        error: function(){
+                            alert('Error occur ... !!!');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </html>

@@ -137,10 +137,30 @@ class nursemodel extends CI_Model{
         $this->db->insert('diagnosis', $data);
     }
 
-    public function getpatientinfo(){
+    public function getPatient(){
         $this->db->order_by('patient_fname', 'ASC');
-        $query8 = $this->db->get_where('patient_info');
-        return $query8->result();
+        $query = $this->db->get('patient_info');
+        return $query->result();
     }
+
+    public function getorcategory(){
+        $query = $this->db->get('orcategory');
+        return $query->result();
+    }
+
+    public function getorsubcategory($category_id){
+        $query = $this->db->get_where('orsub_category', array('category_id' => $category_id));
+        return $query->result();
+    }
+
+    public function getparagraph_query($subcategory_id){
+        $query = $this->db->get_where('chole_ioc_t-tube', array('subcategory_id' => $subcategory_id));
+        return $query->result();
+    }
+
+    // public function getorparagraph(){
+    //     $query = $this->db->get('chole_ioc_t_tube');
+    //     return $query->result();
+    // }
 }
 ?>
