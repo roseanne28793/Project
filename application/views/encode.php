@@ -81,7 +81,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<?php echo site_url('Login/logout'); ?>">
                                 <p>Log out</p>
                             </a>
                         </li>

@@ -153,14 +153,40 @@ class nursemodel extends CI_Model{
         return $query->result();
     }
 
-    public function getparagraph_query($subcategory_id){
-        $query = $this->db->get_where('chole_ioc_t-tube', array('subcategory_id' => $subcategory_id));
-        return $query->result();
-    }
+    // public function getparagraph_query($subcategory_id){
+    //     $query = $this->db->get_where('chole_ioc_t-tube', array('subcategory_id' => $subcategory_id));
+    //     return $query->result();
+    // }
 
     // public function getorparagraph(){
     //     $query = $this->db->get('chole_ioc_t_tube');
     //     return $query->result();
     // }
+
+    // public function getparagraph_query($category_id){
+    //     $data = $this->db->get_where('chole_ioc_t-tube', array('subcategory_id' => $subcategory_id));
+    //     if(num_rows($data)>0){
+    //         return $data->result();
+    //     }
+    //     else{
+    //         return false;
+    //     }
+    // }
+
+    // public function getparagraph_query($category_id){
+    //     $query = $this->db->get_where('chole_ioc_t_tube', array('subcategory_id' => $subcategory_id));
+    // }
+
+    // public function getparagraph_query($subcategory_id){
+    //     $this->db->select(['chole_ioc_t_tube.first_paragraph']);
+    //     $this->db->from('chole_ioc_t_tube');
+    //     $paragraph = $this->db->get();
+    //     return $paragraph->row();
+    // }
+
+    public function getparagraph_query($subcategory_id){
+        $query = $this->db->get_where('chole_ioc_t_tube', ['subcategory_id' => $subcategory_id]);
+        return $query->row();
+    }
 }
 ?>

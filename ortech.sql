@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2020 at 03:10 PM
+-- Generation Time: Jan 03, 2021 at 01:51 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `ortech`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accounts`
+--
+
+CREATE TABLE `accounts` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `level` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `accounts`
+--
+
+INSERT INTO `accounts` (`id`, `username`, `password`, `level`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1),
+(2, 'nurse', '0701aa317da5a004fbf6111545678a6c', 2);
 
 -- --------------------------------------------------------
 
@@ -103,7 +124,7 @@ CREATE TABLE `chole_ioc_t_tube` (
 --
 
 INSERT INTO `chole_ioc_t_tube` (`id`, `subcategory_id`, `first_paragraph`, `2nd_paragraph`, `3rd_paragraph`, `4th_paragraph`) VALUES
-(1, 1, 'Obstructive Jaundice prob 2o toCholedochocystolithiasis\r\nOpenCholecystectomy, Intraoperative TranscysticCholangiogram possible CBDE\r\nObstructive Jaundice 2o to Chronic Choledochocystolithiasis\r\nOpenCholecystectomy, Intraoperative TranscysticCholangiogram, Choledochotomy, CBDE, Choledochostomy, JP Drain', 'Patient supine under CSEA\r\nAsepsis & antisepsis\r\nSterile drapes\r\nRight subcostal incision done carried from the skin up to the peritoneum\r\n', 'OR Findings: liver grossly normal. Distended gallbladder (bilobed) with thickened walls measuring 12.5cm x 5.0cm. (+)round blackish brown stone  approx. 1.5cm in diameter at the Hartmann’s pouch, Cystic duct dilated approx. 1.5cm in diameter, common bile duct not dilated approx. 0.5cm in diameter, w/  palpable stones:round blackish brown stone lodged at the mid CBD measuring approx.. 1.5cm in diameter', 'Cystic artery ligated\r\nCystic duct identified &temporarily ligated using silk 2-0\r\nSmall incision placed over proximal portion of cystic duct\r\nFrench 5 feeding tube inserted through cystic duct incision up to the cystic duct & CBD junction\r\nUltravist dye infused then cholangiogram taken and results noted\r\nCystic duct suture ligated using silk 2-0\r\nCholecystectomy done\r\nCholedochotomy done \r\nFlushing done with sterile saline solution done\r\nFrench 20 T-tube inserted and anchored at the CBD\r\nJP Drain applied and anchored\r\nHemostasis\r\nClosure by layers:	Peritoneum, continuous using Vicryl 2-0\r\nFascia, figure of 8 using Vicryl 2-0\r\nSkin, subcuticular using Vicryl 4-0\r\nSterile dressing applied\r\nPatient tolerated procedure well\r\n');
+(1, 1, 'test', 'test', 'test', 'test');
 
 -- --------------------------------------------------------
 
@@ -44301,6 +44322,12 @@ INSERT INTO `surgeon` (`id`, `surgeon_fname`, `surgeon_mname`, `surgeon_lname`) 
 --
 
 --
+-- Indexes for table `accounts`
+--
+ALTER TABLE `accounts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `anesthesia`
 --
 ALTER TABLE `anesthesia`
@@ -44429,6 +44456,12 @@ ALTER TABLE `surgeon`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `accounts`
+--
+ALTER TABLE `accounts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `anesthesia`

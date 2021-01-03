@@ -81,7 +81,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<?php echo site_url('Login/logout'); ?>">
                                 <p>Log out</p>
                             </a>
                         </li>
@@ -161,7 +161,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <textarea name="1st_paragraph" id="1st_paragraph" rows="10" class="form-control" disabled></textarea>
+                <textarea name="first_paragraph" id="first_paragraph" rows="10" class="form-control" disabled></textarea>
             </div>
         </div>
       </form>
@@ -230,27 +230,97 @@
                 }
             });
 
-            $('#or_subcategory').on('change', function(){
-                var subcategory_id = $(this).val();
-                if(subcategory_id == ''){
-                    $('#1st_paragraph').prop('disabled', true);
-                }
-                else{
-                    $('#1st_paragraph').prop('disabled', false);
-                    $.ajax({
-                        url:"<?php echo base_url() ?>nurse/getparagraph",
-                        type: "POST",
-                        data: {'subcategory_id' : subcategory_id},
-                        dataType: 'json',
-                        success: function(response){
-                            $('#1st_paragraph').html(data);
-                        },
-                        error: function(){
-                            alert('Error occur ... !!!');
-                        }
-                    });
-                }
-            });
-        });
+            // $('#or_subcategory').on('change', function(){
+            //     var subcategory_id = $($this).val();
+            //     if(subcategory_id == ''){
+            //         $('#first_paragraph').prop('disabled', true);
+            //     }
+            //     else{
+            //         $('#first_paragraph').prop('disabled', false);
+            //         $.ajax({
+            //             url:"<?php echo base_url() ?>nurse/getparagraph",
+            //             type: "POST",
+            //             data: {'subcategory_id' : subcategory_id},
+            //             dataType: "JSON",
+            //             success: function(data){
+            //                 $('#first_paragraph').html(data);
+            //             }
+            //             error: function(){
+            //                 alert("Please select sub category");
+            //             }
+            //         });
+            //     }
+            // });
+
+
+            // $('#or_subcategory').on('change', function(){
+            //     var subcategory_id = $(this).val();
+            //     if(subcategory_id == ''){
+            //         $('#first_paragraph').prop('disabled', true);
+            //     }
+            //     else{
+            //         $('#first_paragraph').prop('disabled', false);
+            //         $.ajax({
+            //             url:"<?php echo base_url() ?>nurse/getparagraph",
+            //             type: "POST",
+            //             data: {'subcategory_id' : subcategory_id},
+            //             dataType: 'json',
+            //             success: function(response){
+            //                 $('#first_paragraph').html(data);
+            //             },
+            //             error: function(){
+            //                 alert('Error occur ... !!!');
+            //             }
+            //         });
+            //     }
+            // });
+
+        //     $('#or_subcategory').on('change', function(){
+        //         var subcategory_id = $(this).val();
+        //         if(subcategory_id == ''){
+        //             $('#first_paragraph').prop('disabled', true);
+        //         }
+        //         else{
+        //             $('#first_paragraph').prop('disabled', false);
+        //             $.ajax({
+        //                 url:"<?php echo base_url() ?>nurse/getparagraph",
+        //                 type: "POST",
+        //                 data: {'subcategory_id' : subcategory_id},
+        //                 dataType: 'json',
+        //                 success: function(response){
+        //                     $('#first_paragraph').html(response.first_paragraph);
+        //                 }
+        //             });
+        //         }
+        //     });
+        // });
+        
+        
+        
     </script>
+
+    // <script>
+    //     $(document).ready(function(){
+    //         $('#or_subcatgory').on('change', function(){
+    //             var subcategory_id = $(this).val();
+    //             if (subcategory_id == ''){
+    //                 $('#1st_paragraph').prop('disabled', true);
+    //             }
+    //             else{
+    //                 $('#1st_paragraph').prop('disabled', false);
+    //                 $.ajax({
+    //                     type: "POST",
+    //                     url: "<?php echo base_url() ?>nurse/getparagraph",
+    //                     data: {
+    //                         'subcategory_id' : subcategory_id,
+    //                     },
+    //                     dataType: 'text',
+    //                     success: function(response){
+    //                         $('#1st_paragraph').html(response);
+    //                     }
+    //                 });
+    //             }
+    //         });
+    //     });
+    // </script>
 </html>
