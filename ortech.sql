@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2021 at 01:51 PM
+-- Generation Time: Jan 04, 2021 at 03:18 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -61,7 +61,8 @@ CREATE TABLE `anesthesia` (
 --
 
 INSERT INTO `anesthesia` (`id`, `anes_caseno`, `anes_typeused`, `anes_began`, `anes_ended`) VALUES
-(1, 5646, 'fsasaf', 'dsadsad', 'dsad');
+(1, 5646, 'fsasaf', 'dsadsad', 'dsad'),
+(6, 24528, 'Anesthesia', '8:17 AM', '9:17 AM');
 
 -- --------------------------------------------------------
 
@@ -102,7 +103,8 @@ CREATE TABLE `baby` (
 --
 
 INSERT INTO `baby` (`id`, `baby_caseno`, `baby_out`, `baby_apgar`, `baby_sex`) VALUES
-(1, 4566, 'safdsf', 'dasdsaf', 'female');
+(1, 4566, 'safdsf', 'dasdsaf', 'female'),
+(6, 24528, '9:17 AM', 'apgar', 'Male');
 
 -- --------------------------------------------------------
 
@@ -166,7 +168,8 @@ CREATE TABLE `diagnosis` (
 --
 
 INSERT INTO `diagnosis` (`id`, `diag_caseno`, `diag_preop`, `diag_postop`, `diag_op_performed`, `diag_specimens`) VALUES
-(1, 45254, 'khjghjf', 'gdfhf', 'dgfdg', 'gdfgdfgdf');
+(1, 45254, 'khjghjf', 'gdfhf', 'dgfdg', 'gdfgdfgdf'),
+(6, 24528, 'dsfdsgdsg', 'fdsggdfsg', 'fdsfdsf', 'gdsgdsgsdg');
 
 -- --------------------------------------------------------
 
@@ -190,7 +193,8 @@ CREATE TABLE `inventory` (
 --
 
 INSERT INTO `inventory` (`id`, `inv_caseno`, `inv_sponges_preop`, `inv_kellys_preop`, `inv_needles_preop`, `inv_sponges_postop`, `inv_kellys_postop`, `inv_needles_postop`) VALUES
-(1, '245364', 1, 1, 1, 1, 1, 1);
+(1, '245364', 1, 1, 1, 1, 1, 1),
+(6, '24528', 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -255,7 +259,8 @@ CREATE TABLE `operation` (
 --
 
 INSERT INTO `operation` (`id`, `op_caseno`, `date_of_operation`, `op_started`, `op_ended`) VALUES
-(1, 15151, 'fsdfdg', 'fdsgd', 'gdsgds');
+(1, 15151, 'fsdfdg', 'fdsgd', 'gdsgds'),
+(6, 24528, '2021-01-04', '8:17 AM', '10:17 AM');
 
 -- --------------------------------------------------------
 
@@ -279,7 +284,8 @@ CREATE TABLE `operation_staff` (
 --
 
 INSERT INTO `operation_staff` (`id`, `case_no`, `opstaff_surgeon`, `opstaff_asstsurgeon`, `opstaff_anes`, `opstaff_scrubstaff`, `opstaff_cstaff`, `opstaff_otherpersonnel`) VALUES
-(1, 123456, 'Max', 'Max', 'Max', 'Max', 'Max', 'Max');
+(1, 123456, 'Max', 'Max', 'Max', 'Max', 'Max', 'Max'),
+(14, 24528, '1', 'fsdgsfdghfsh', '1', '1', '1', 'other');
 
 -- --------------------------------------------------------
 
@@ -346,7 +352,7 @@ CREATE TABLE `patient_info` (
   `patient_sex` varchar(25) NOT NULL,
   `patient_status` varchar(25) NOT NULL,
   `patient_trans_in` varchar(255) NOT NULL,
-  `patient_trans_out` varchar(255) DEFAULT NULL
+  `patient_trans_out` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -354,8 +360,9 @@ CREATE TABLE `patient_info` (
 --
 
 INSERT INTO `patient_info` (`id`, `case_no`, `case_date`, `room_no`, `patient_fname`, `patient_mname`, `patient_lname`, `patient_suffixname`, `patient_address`, `patient_province`, `patient_city/mun`, `patient_brgy`, `membership`, `patient_age`, `patient_bday`, `patient_sex`, `patient_status`, `patient_trans_in`, `patient_trans_out`) VALUES
-(1, 123456, '25/12/2020', 'AB2', 'Max', 'Max', 'Max', NULL, 'Andrea 1', 'CAVITE', 'Bacoor', 'Panapaan V', '1', '23 yrs old', '1999-06-03', 'Female', 'Single', '', NULL),
-(19, 425585245, '', '', 'Anne', '', '', NULL, '', '', NULL, NULL, '', '', '', '', '', '', NULL);
+(1, 123456, '25/12/2020', 'AB2', 'Max', 'Max', 'Max', '', 'Andrea 1', 'CAVITE', 'Bacoor', 'Panapaan V', '1', '23 yrs old', '1999-06-03', 'Female', 'Single', '', ''),
+(19, 425585245, '', '', 'Anne', '', '', '', '', '', NULL, NULL, '', '', '', '', '', '', ''),
+(20, 24528, '4/1/2021', 'A21', 'Roseanne', 'San Juan', 'Denisa', '', '4038 Viscarra Comp. Andrea 1', '0421', '042103', '042103056', '1', '21 years old', '1999-06-03', 'Female', '1', 'sdadf', 'werfaef');
 
 -- --------------------------------------------------------
 
@@ -44467,7 +44474,7 @@ ALTER TABLE `accounts`
 -- AUTO_INCREMENT for table `anesthesia`
 --
 ALTER TABLE `anesthesia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `anesthesiologist`
@@ -44479,7 +44486,7 @@ ALTER TABLE `anesthesiologist`
 -- AUTO_INCREMENT for table `baby`
 --
 ALTER TABLE `baby`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `chole_ioc_t_tube`
@@ -44497,13 +44504,13 @@ ALTER TABLE `circulating_staff`
 -- AUTO_INCREMENT for table `diagnosis`
 --
 ALTER TABLE `diagnosis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `membership`
@@ -44521,13 +44528,13 @@ ALTER TABLE `nurse`
 -- AUTO_INCREMENT for table `operation`
 --
 ALTER TABLE `operation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `operation_staff`
 --
 ALTER TABLE `operation_staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `orcategory`
@@ -44545,7 +44552,7 @@ ALTER TABLE `orsub_category`
 -- AUTO_INCREMENT for table `patient_info`
 --
 ALTER TABLE `patient_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `refbrgy`

@@ -153,10 +153,10 @@ class nursemodel extends CI_Model{
         return $query->result();
     }
 
-    // public function getparagraph_query($subcategory_id){
-    //     $query = $this->db->get_where('chole_ioc_t-tube', array('subcategory_id' => $subcategory_id));
-    //     return $query->result();
-    // }
+    public function getparagraph_query($subcategory_id){
+        $query = $this->db->get_where('chole_ioc_t_tube', array('subcategory_id' => $subcategory_id));
+        return $query->result();
+    }
 
     // public function getorparagraph(){
     //     $query = $this->db->get('chole_ioc_t_tube');
@@ -184,9 +184,9 @@ class nursemodel extends CI_Model{
     //     return $paragraph->row();
     // }
 
-    public function getparagraph_query($subcategory_id){
-        $query = $this->db->get_where('chole_ioc_t_tube', ['subcategory_id' => $subcategory_id]);
-        return $query->row();
-    }
+    // public function getparagraph_query($subcategory_id){
+    //     $query = $this->db->get_where('chole_ioc_t_tube', ['subcategory_id' => $subcategory_id]);
+    //     return $query->row();
+    // }
 }
 ?>

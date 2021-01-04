@@ -106,18 +106,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
         }
 
-        // public function getparagraph(){
-        //     $subcategory_id = $this->input->post('subcategory_id');
-        //     $chole_ioc_t_tube= $this->nursemodel->getparagraph_query($subcategory_id);
-        //     if(count($chole_ioc_t_tube)>0){
-        //         $pro_select_box = '';
-        //         $pro_select_box .= '<textarea name="1st_paragraph" id="1st_paragraph" rows="10" class="form-control">No data</textarea>';
-        //         foreach ($chole_ioc_t_tube as $row){
-        //             $pro_select_box .='<textarea name="1st_paragraph" id="1st_paragraph" rows="10" class="form-control">'.$row->first_paragraph.'</textarea>';
-        //         }
-        //         echo json_encode($pro_select_box);
-        //     }
-        // }
+        public function getparagraph(){
+            $subcategory_id = $this->input->post('subcategory_id');
+            $chole_ioc_t_tube= $this->nursemodel->getparagraph_query($subcategory_id);
+            if(count($chole_ioc_t_tube)>0){
+                $pro_select_box = '';
+                foreach ($chole_ioc_t_tube as $row){
+                    $pro_select_box .= $row->first_paragraph;
+                }
+                echo json_encode($pro_select_box);
+            }
+            // $data = array(
+            //     '' => ''
+            // )
+        }
 
         // public function getparagraph(){
         //     $subcategory_id = $this->input->post('subcategory_id');
@@ -154,11 +156,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         //     $this->load->view('ortech', ['paragraphData' => $paragraphData]);
         // }
 
-        public function getparagraph($subcategory_id){
-            $this->load->model('nursemodel');
-            $data['chole_ioc_t_tube'] = $this->nursemodel->getparagraph_query($subcategory_id);
-            $this->load->view('ortech', $data);
-        }
+        // public function getparagraph($subcategory_id){
+        //     $this->load->model('nursemodel');
+        //     $data['chole_ioc_t_tube'] = $this->nursemodel->getparagraph_query($subcategory_id);
+        //     $this->load->view('ortech', $data);
+        // }
 
     }
 ?>

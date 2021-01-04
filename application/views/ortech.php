@@ -107,15 +107,15 @@
                                         <th>Action</th>
                                     </thead>
                                     <?php foreach($patient_info as $row): ?>
+                                    
                                     <tbody>
                                         <tr>
                                             <td value="<?php echo $row->id ?>"><?php echo $row->case_no; ?></td>
                                             <td><?php echo $row->patient_fname." ".$row->patient_mname." ".$row->patient_lname; ?></td>
                                             <td>
                                                 <button type="button" class="btn btn-success editbtn" data-toggle="modal" data-target="#exampleModal">Add ORTech</button>
-                                                <button class="btn btn-danger">Delete</button>
                                             </td>
-                                            <td></td>
+                                            <td><button class="btn btn-danger">Delete</button></td>
                                         </tr>
                                     </tbody>
                                     <?php endforeach; ?>
@@ -230,6 +230,28 @@
                 }
             });
 
+            $('#or_subcategory').on('change', function(){
+                var subcategory_id = $(this).val();
+                if(subcategory_id == ''){
+                    $('#first_paragraph').prop('disabled', true);
+                }
+                else{
+                    $('#first_paragraph').prop('disabled', false);
+                    $.ajax({
+                        url:"<?php echo base_url() ?>nurse/getparagraph",
+                        type: "POST",
+                        data: {'subcategory_id' : subcategory_id},
+                        dataType: 'json',
+                        success: function(data){
+                            $('#first_paragraph').html(data);
+                        },
+                        error: function(){
+                            alert('Error occur ... !!!');
+                        }
+                    });
+                }
+            });
+
             // $('#or_subcategory').on('change', function(){
             //     var subcategory_id = $($this).val();
             //     if(subcategory_id == ''){
@@ -253,27 +275,6 @@
             // });
 
 
-            // $('#or_subcategory').on('change', function(){
-            //     var subcategory_id = $(this).val();
-            //     if(subcategory_id == ''){
-            //         $('#first_paragraph').prop('disabled', true);
-            //     }
-            //     else{
-            //         $('#first_paragraph').prop('disabled', false);
-            //         $.ajax({
-            //             url:"<?php echo base_url() ?>nurse/getparagraph",
-            //             type: "POST",
-            //             data: {'subcategory_id' : subcategory_id},
-            //             dataType: 'json',
-            //             success: function(response){
-            //                 $('#first_paragraph').html(data);
-            //             },
-            //             error: function(){
-            //                 alert('Error occur ... !!!');
-            //             }
-            //         });
-            //     }
-            // });
 
         //     $('#or_subcategory').on('change', function(){
         //         var subcategory_id = $(this).val();
@@ -293,7 +294,7 @@
         //             });
         //         }
         //     });
-        // });
+        });
         
         
         

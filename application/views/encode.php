@@ -102,7 +102,7 @@
                             </div>
                             <div class="content">
                                 <?php echo validation_errors('<div class="alert alert-danger" role="alert">','</div>'); ?>
-                                <?php echo $this->session->flashdata('form'); ?>
+                                <!-- <?php echo $this->session->flashdata('form'); ?> -->
                                 <form autocomplete="off" method="post" action="<?php echo site_url("Nurse/addpatient") ?>">
                                     <div class="row">
                                         <div class="col-md-3" id="case">
@@ -359,16 +359,16 @@
                                                 <label>No. of Sponges (PRE-OP):</label>
                                                 <select name="sponges_preop" id="" class="form-control">
                                                     <option value="">Select</option>
-                                                    <option value="">1</option>
-                                                    <option value="">2</option>
-                                                    <option value="">3</option>
-                                                    <option value="">4</option>
-                                                    <option value="">5</option>
-                                                    <option value="">6</option>
-                                                    <option value="">7</option>
-                                                    <option value="">8</option>
-                                                    <option value="">9</option>
-                                                    <option value="">10</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -377,16 +377,16 @@
                                                 <label>No. of Sponges (POST-OP):</label>
                                                 <select name="sponges_postop" id="" class="form-control">
                                                     <option value="">Select</option>
-                                                    <option value="">1</option>
-                                                    <option value="">2</option>
-                                                    <option value="">3</option>
-                                                    <option value="">4</option>
-                                                    <option value="">5</option>
-                                                    <option value="">6</option>
-                                                    <option value="">7</option>
-                                                    <option value="">8</option>
-                                                    <option value="">9</option>
-                                                    <option value="">10</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -398,16 +398,16 @@
                                                 <label>No. of Kellys (PRE-OP):</label>
                                                 <select name="kellys_preop" id="" class="form-control">
                                                     <option value="">Select</option>
-                                                    <option value="">1</option>
-                                                    <option value="">2</option>
-                                                    <option value="">3</option>
-                                                    <option value="">4</option>
-                                                    <option value="">5</option>
-                                                    <option value="">6</option>
-                                                    <option value="">7</option>
-                                                    <option value="">8</option>
-                                                    <option value="">9</option>
-                                                    <option value="">10</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -416,16 +416,16 @@
                                                 <label>No. of Kellys (POST-OP):</label>
                                                 <select name="kellys_postop" id="" class="form-control">
                                                     <option value="">Select</option>
-                                                    <option value="">1</option>
-                                                    <option value="">2</option>
-                                                    <option value="">3</option>
-                                                    <option value="">4</option>
-                                                    <option value="">5</option>
-                                                    <option value="">6</option>
-                                                    <option value="">7</option>
-                                                    <option value="">8</option>
-                                                    <option value="">9</option>
-                                                    <option value="">10</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -437,16 +437,16 @@
                                                 <label>No. of Needles (PRE-OP):</label>
                                                 <select name="needles_preop" id="" class="form-control">
                                                     <option value="">Select</option>
-                                                    <option value="">1</option>
-                                                    <option value="">2</option>
-                                                    <option value="">3</option>
-                                                    <option value="">4</option>
-                                                    <option value="">5</option>
-                                                    <option value="">6</option>
-                                                    <option value="">7</option>
-                                                    <option value="">8</option>
-                                                    <option value="">9</option>
-                                                    <option value="">10</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -455,16 +455,16 @@
                                                 <label>No. of Needles (POST-OP):</label>
                                                 <select name="needles_postop" id="" class="form-control">
                                                     <option value="">Select</option>
-                                                    <option value="">1</option>
-                                                    <option value="">2</option>
-                                                    <option value="">3</option>
-                                                    <option value="">4</option>
-                                                    <option value="">5</option>
-                                                    <option value="">6</option>
-                                                    <option value="">7</option>
-                                                    <option value="">8</option>
-                                                    <option value="">9</option>
-                                                    <option value="">10</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
                                                 </select>
                                             </div>
                                         </div>
