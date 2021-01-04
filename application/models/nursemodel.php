@@ -154,39 +154,26 @@ class nursemodel extends CI_Model{
     }
 
     public function getparagraph_query($subcategory_id){
-        $query = $this->db->get_where('chole_ioc_t_tube', array('subcategory_id' => $subcategory_id));
+        $query = $this->db->get_where('chole_ioc', array('subcategory_id' => $subcategory_id));
         return $query->result();
     }
 
-    // public function getorparagraph(){
-    //     $query = $this->db->get('chole_ioc_t_tube');
-    //     return $query->result();
-    // }
+    public function savepatientortech(){
+        $data = array(
+            'case_no' => $this->input->post('case_no'),
+            'category_id' => $this->input->post('or_category'),
+            'subcategory_id' => $this->input->post('or_subcategory'),
+            'first_paragraph' => $this->input->post('first_paragraph'),
+            'second_paragraph' => $this->input->post('second_paragraph'),
+            'third_paragraph' => $this->input->post('third_paragraph'),
+            'fourth_paragraph' => $this->input->post('fourth_paragraph')
+        );
+        $this->db->insert('patient_ortech', $data);
+    }
 
-    // public function getparagraph_query($category_id){
-    //     $data = $this->db->get_where('chole_ioc_t-tube', array('subcategory_id' => $subcategory_id));
-    //     if(num_rows($data)>0){
-    //         return $data->result();
-    //     }
-    //     else{
-    //         return false;
-    //     }
-    // }
-
-    // public function getparagraph_query($category_id){
-    //     $query = $this->db->get_where('chole_ioc_t_tube', array('subcategory_id' => $subcategory_id));
-    // }
-
-    // public function getparagraph_query($subcategory_id){
-    //     $this->db->select(['chole_ioc_t_tube.first_paragraph']);
-    //     $this->db->from('chole_ioc_t_tube');
-    //     $paragraph = $this->db->get();
-    //     return $paragraph->row();
-    // }
-
-    // public function getparagraph_query($subcategory_id){
-    //     $query = $this->db->get_where('chole_ioc_t_tube', ['subcategory_id' => $subcategory_id]);
-    //     return $query->row();
-    // }
+    public function previewpatientortech(){
+        $query = $this->db->get_where('patient_ortech', array('case_no' => $case_no));
+        return $query->result();
+    }
 }
 ?>

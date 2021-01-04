@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 04, 2021 at 03:18 AM
+-- Generation Time: Jan 04, 2021 at 09:47 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -109,24 +109,26 @@ INSERT INTO `baby` (`id`, `baby_caseno`, `baby_out`, `baby_apgar`, `baby_sex`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chole_ioc_t_tube`
+-- Table structure for table `chole_ioc`
 --
 
-CREATE TABLE `chole_ioc_t_tube` (
+CREATE TABLE `chole_ioc` (
   `id` int(11) NOT NULL,
   `subcategory_id` int(11) NOT NULL,
   `first_paragraph` text NOT NULL,
-  `2nd_paragraph` text NOT NULL,
-  `3rd_paragraph` text NOT NULL,
-  `4th_paragraph` text NOT NULL
+  `second_paragraph` text NOT NULL,
+  `third_paragraph` text NOT NULL,
+  `fourth_paragraph` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `chole_ioc_t_tube`
+-- Dumping data for table `chole_ioc`
 --
 
-INSERT INTO `chole_ioc_t_tube` (`id`, `subcategory_id`, `first_paragraph`, `2nd_paragraph`, `3rd_paragraph`, `4th_paragraph`) VALUES
-(1, 1, 'test', 'test', 'test', 'test');
+INSERT INTO `chole_ioc` (`id`, `subcategory_id`, `first_paragraph`, `second_paragraph`, `third_paragraph`, `fourth_paragraph`) VALUES
+(1, 1, 'Obstructive Jaundice prob 2° toCholedochocystolithiasis\r\nOpenCholecystectomy, Intraoperative TranscysticCholangiogram possible CBDE\r\nObstructive Jaundice 2° to Chronic Choledochocystolithiasis\r\nOpenCholecystectomy, Intraoperative TranscysticCholangiogram, Choledochotomy, CBDE,\r\nCholedochostomy, JP Drain', 'Patient supine under CSEA\r\nAsepsis & antisepsis\r\nSterile drapes\r\nRight subcostal incision done carried from the skin up to the peritoneum', 'OR Findings: liver grossly normal. Distended gallbladder (bilobed) with thickened walls measuring 12.5cm x 5.0cm. (+)round blackish brown stone  approx. 1.5cm in diameter at the Hartmann’s pouch, Cystic duct dilated approx. 1.5cm in diameter, common bile duct not dilated approx. 0.5cm in diameter, w/  palpable stones:round blackish brown stone lodged at the mid CBD measuring approx.. 1.5cm in diameter', 'Cystic artery ligated\r\nCystic duct identified &temporarily ligated using silk 2-0\r\nSmall incision placed over proximal portion of cystic duct\r\nFrench 5 feeding tube inserted through cystic duct incision up to the cystic duct & CBD junction\r\nUltravist dye infused then cholangiogram taken and results noted\r\nCystic duct suture ligated using silk 2-0\r\nCholecystectomy done\r\nCholedochotomy done\r\nFlushing done with sterile saline solution done\r\nFrench 20 T-tube inserted and anchored at the CBD\r\nJP Drain applied and anchored\r\nHemostasis\r\nClosure by layers: Peritoneum, continuous using Vicryl 2-0\r\n                   Fascia, figure of 8 using Vicryl 2-0\r\n                   Skin, subcuticular using Vicryl 4-0\r\nSterile dressing applied\r\nPatient tolerated procedure well'),
+(2, 2, 'Chronic CalculousCholecystitis t/c Choledocholithiasis\r\nOpenCholecystectomy, Intraoperative TranscysticCholangiogram possible CBDE\r\nObstructive Jaundice 2o to Chronic Choledochocystolithiasis\r\nOpenCholecystectomy, Intraoperative TranscysticCholangiogram, Choledochotomy, CBDE,\r\nCholedochocystostomy, JP Drain', 'Patient supine under CSEA\r\nAsepsis & antisepsis\r\nSterile drapes\r\nRight subcostal incision done carried from the skin up to the peritoneum', 'OR Findings: liver grossly normal. Distended gallbladder (bilobed) with thickened walls measuring 12.5cm x 5.0cm. (+)round blackish brownstone  approx. 1.5cm in diameter at the Hartmann’s pouch, Cystic duct dilated approx. 1.5cm in diameter, common bile duct not dilated approx. 0.5cm in diameter, w/  palpable stones:round blackish brown stone lodged at the mid CBD measuring approx.. 1.5cm in diameter', 'Cystic artery ligated\r\nCystic duct identified &temporarily ligated using silk 2-0\r\nSmall incision placed over proximal portion of cystic duct\r\nFrench 5 feeding tube inserted through cystic duct incision up to the cystic duct & CBD junction\r\nUltravist dye infused then cholangiogram taken and results noted\r\nCystic duct suture ligated using silk 2-0\r\nCholecystectomy done\r\nCholedochotomy done \r\nFlushing done with sterile saline solution done\r\nFrench 20 T-tube inserted and anchored at the CBD\r\nJP Drain applied and anchored\r\nHemostasis\r\nClosure by layers: Peritoneum, continuous using Vicryl 2-0\r\n                   Fascia, figure of 8 using Vicryl 2-0\r\n                   Skin, subcuticular using Vicryl 4-0\r\nSterile dressing applied\r\nPatient tolerated procedure well'),
+(3, 3, 'Chronic CalculousCholecystitis t/c Choledocjolithiasis\r\nOpenCholecystectomy, Intraoperative TranscysticCholangiogram possible CBDE\r\nObstructive Jaundice 2o to Chronic Choledochocystolithiasis\r\nOpenCholecystectomy, Intraoperative TranscysticCholangiogram, Choledochotomy, CBDE,\r\nCholedochoscopy, T-tube, Completion Cholangiogram, JP Drain', 'Patient supine under CSEA\r\nAsepsis & antisepsis\r\nSterile drapes\r\nRight subcostal incision done carried from the skin up to the peritoneum', 'OR Findings: liver grossly normal. Distended gallbladder with thickened walls measuring 7.5cm x 3.0cm. (+) solitary cuboid blackish brown stone with approx. 1.5cm x 1.5cm at the fundus, Cystic duct not dilated approx. 0.3cm in diameter, common bile duct dilated approx. 1.5cm in diameter, w/ 2 palpable stones: 1 cuboid blackish brown stone freely floating stone approx. 1.5cm x 1.5cm near the distal CBD & 1 cuboid blackish brown stone approx.. 1.0cm x 0.75cm lodged at the proximal CBD', 'Cystic artery ligated\r\nCystic duct identified &temporarily ligated using silk 2-0\r\nSmall incision placed over proximal portion of cystic duct\r\nFrench 5 feeding tube inserted through cystic duct incision up to the cystic duct & CBD junction\r\nUltravist dye infused then cholangiogram taken and results noted\r\nCystic duct suture ligated using silk 2-0\r\nCholecystectomy done\r\nCholedochotomy done \r\nFlushing done with sterile saline solution done\r\nManual extraction of choledocholithiases done\r\nFlushing with sterile saline solution done again\r\nCholedochoscopy done and findings noted\r\nFrench 18 T-tube inserted and anchored at the CBD\r\nJP Drain applied and anchored\r\nHemostasis\r\nClosure by layers: Peritoneum, continuous using Vicryl 2-0\r\n                   Fascia, figure of 8 using Vicryl 2-0\r\n                   Skin, subcuticular using Monocryl 4-0\r\nSterile dressing applied\r\nPatient tolerated procedure well');
 
 -- --------------------------------------------------------
 
@@ -325,7 +327,9 @@ CREATE TABLE `orsub_category` (
 --
 
 INSERT INTO `orsub_category` (`id`, `subcategory_id`, `sub_categoryname`, `category_id`) VALUES
-(1, 1, 'Chole IOC T-tube', 1);
+(1, 1, 'Chole IOC T-tube', 1),
+(2, 2, 'Chole IOC T-tube-2', 1),
+(3, 3, 'Chole IOC CBDE Scope', 1);
 
 -- --------------------------------------------------------
 
@@ -363,6 +367,30 @@ INSERT INTO `patient_info` (`id`, `case_no`, `case_date`, `room_no`, `patient_fn
 (1, 123456, '25/12/2020', 'AB2', 'Max', 'Max', 'Max', '', 'Andrea 1', 'CAVITE', 'Bacoor', 'Panapaan V', '1', '23 yrs old', '1999-06-03', 'Female', 'Single', '', ''),
 (19, 425585245, '', '', 'Anne', '', '', '', '', '', NULL, NULL, '', '', '', '', '', '', ''),
 (20, 24528, '4/1/2021', 'A21', 'Roseanne', 'San Juan', 'Denisa', '', '4038 Viscarra Comp. Andrea 1', '0421', '042103', '042103056', '1', '21 years old', '1999-06-03', 'Female', '1', 'sdadf', 'werfaef');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patient_ortech`
+--
+
+CREATE TABLE `patient_ortech` (
+  `id` int(11) NOT NULL,
+  `case_no` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `subcategory_id` int(11) NOT NULL,
+  `first_paragraph` text NOT NULL,
+  `second_paragraph` text NOT NULL,
+  `third_paragraph` text NOT NULL,
+  `fourth_paragraph` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `patient_ortech`
+--
+
+INSERT INTO `patient_ortech` (`id`, `case_no`, `category_id`, `subcategory_id`, `first_paragraph`, `second_paragraph`, `third_paragraph`, `fourth_paragraph`) VALUES
+(1, 425585245, 1, 1, 'Obstructive Jaundice prob 2° toCholedochocystolithiasis\r\nOpenCholecystectomy, Intraoperative TranscysticCholangiogram possible CBDE\r\nObstructive Jaundice 2° to Chronic Choledochocystolithiasis\r\nOpenCholecystectomy, Intraoperative TranscysticCholangiogram, Choledochotomy, CBDE,\r\nCholedochostomy, JP Drain', 'Patient supine under CSEA\r\nAsepsis & antisepsis\r\nSterile drapes\r\nRight subcostal incision done carried from the skin up to the peritoneum', 'OR Findings: liver grossly normal. Distended gallbladder (bilobed) with thickened walls measuring 12.5cm x 5.0cm. (+)round blackish brown stone  approx. 1.5cm in diameter at the Hartmann’s pouch, Cystic duct dilated approx. 1.5cm in diameter, common bile duct not dilated approx. 0.5cm in diameter, w/  palpable stones:round blackish brown stone lodged at the mid CBD measuring approx.. 1.5cm in diameter', 'Cystic artery ligated\r\nCystic duct identified &temporarily ligated using silk 2-0\r\nSmall incision placed over proximal portion of cystic duct\r\nFrench 5 feeding tube inserted through cystic duct incision up to the cystic duct & CBD junction\r\nUltravist dye infused then cholangiogram taken and results noted\r\nCystic duct suture ligated using silk 2-0\r\nCholecystectomy done\r\nCholedochotomy done\r\nFlushing done with sterile saline solution done\r\nFrench 20 T-tube inserted and anchored at the CBD\r\nJP Drain applied and anchored\r\nHemostasis\r\nClosure by layers: Peritoneum, continuous using Vicryl 2-0\r\n                   Fascia, figure of 8 using Vicryl 2-0\r\n                   Skin, subcuticular using Vicryl 4-0\r\nSterile dressing applied\r\nPatient tolerated procedure well');
 
 -- --------------------------------------------------------
 
@@ -44353,9 +44381,9 @@ ALTER TABLE `baby`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `chole_ioc_t_tube`
+-- Indexes for table `chole_ioc`
 --
-ALTER TABLE `chole_ioc_t_tube`
+ALTER TABLE `chole_ioc`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -44416,6 +44444,12 @@ ALTER TABLE `orsub_category`
 -- Indexes for table `patient_info`
 --
 ALTER TABLE `patient_info`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `patient_ortech`
+--
+ALTER TABLE `patient_ortech`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -44489,10 +44523,10 @@ ALTER TABLE `baby`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `chole_ioc_t_tube`
+-- AUTO_INCREMENT for table `chole_ioc`
 --
-ALTER TABLE `chole_ioc_t_tube`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `chole_ioc`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `circulating_staff`
@@ -44546,13 +44580,19 @@ ALTER TABLE `orcategory`
 -- AUTO_INCREMENT for table `orsub_category`
 --
 ALTER TABLE `orsub_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `patient_info`
 --
 ALTER TABLE `patient_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `patient_ortech`
+--
+ALTER TABLE `patient_ortech`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `refbrgy`

@@ -41,7 +41,8 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a class="simple-text">
-                    St. Dominic Medical Center - ORTech
+                    St. Dominic Medical Center
+                    <!-- <img src="<?php echo base_url() ?>assets/img/1.jpg" alt=""> -->
                 </a>
             </div>
 
@@ -97,25 +98,26 @@
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">Record of Operation</h4>
+                                <button type="button" class="btn btn-success addbtn" data-toggle="modal" data-target="#exampleModal">Add</button>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <thead>
+                                        <th>Id</th>
                                     	<th>Case No.</th>
                                         <th>Name</th>
-                                        <th>OR Tech</th>
                                         <th>Action</th>
                                     </thead>
+                                    <?php $i=1; ?>
                                     <?php foreach($patient_info as $row): ?>
                                     
                                     <tbody>
                                         <tr>
+                                            <td><?php echo $i; ?></td>
                                             <td value="<?php echo $row->id ?>"><?php echo $row->case_no; ?></td>
                                             <td><?php echo $row->patient_fname." ".$row->patient_mname." ".$row->patient_lname; ?></td>
-                                            <td>
-                                                <button type="button" class="btn btn-success editbtn" data-toggle="modal" data-target="#exampleModal">Add ORTech</button>
-                                            </td>
-                                            <td><button class="btn btn-danger">Delete</button></td>
+                                            <td><button class="btn btn-info previewbtn" data-toggle="modal" data-target="#exampleModal">Preview</button> <button class="btn btn-warning">Edit</button> <button class="btn btn-danger">Delete</button></td>
+                                            <?php $i++; ?>
                                         </tr>
                                     </tbody>
                                     <?php endforeach; ?>
@@ -129,17 +131,17 @@
         <?php include_once "include/footer.php" ?>
     </div>
 </div>
-<!-- Modal -->
-<div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- Modal Add ORTech -->
+<div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add ORTech</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="">
+      <form autocomplete="off" method="post" action="<?php echo site_url("Nurse/addortech") ?>">
         <div class="modal-body">
             <div class="form-group">
                 <label>Case No.:</label>
@@ -161,18 +163,66 @@
                 </select>
             </div>
             <div class="form-group">
-                <textarea name="first_paragraph" id="first_paragraph" rows="10" class="form-control" disabled></textarea>
+                <textarea name="first_paragraph" id="first_paragraph" rows="6" class="form-control" disabled></textarea>
+            </div>
+            <div class="form-group">
+                <textarea name="second_paragraph" id="second_paragraph" rows="6" class="form-control" disabled></textarea>
+            </div>
+            <div class="form-group">
+                <textarea name="third_paragraph" id="third_paragraph" rows="6" class="form-control" disabled></textarea>
+            </div>
+            <div class="form-group">
+                <textarea name="fourth_paragraph" id="fourth_paragraph" rows="18" class="form-control" disabled></textarea>
             </div>
         </div>
-      </form>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" value="save">Save</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
-<!-- end of modal -->
+<!-- end of modal add OR Tech -->
+
+<!-- Modal Preview -->
+<div class="modal fade" id="previewmodal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Preview</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Case No.:</label>
+                <input type="text" class="form-control" name="case_no" id="case_no">
+            </div>
+            <div class="form-group">
+                <label>OR Category:</label>
+                <input type="text" class="form-control" name="or_category" id="or_category">
+            </div>
+            <div class="form-group">
+                <label>OR Sub-Category:</label>
+                <input type="text" class="form-control" name="or_subcategory" id="or_subcategory">
+            </div>
+            <div class="form-group">
+                <textarea name="paragraph" id="paragraph" rows="30" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" value="save">Save</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- end of modal preview -->
+
 </body>
 
     <!--   Core JS Files   -->
@@ -190,8 +240,8 @@
 
     <script>
         $(document).ready(function(){
-            $('.editbtn').on('click', function(){
-                $('#editmodal').modal('show');
+            $('.addbtn').on('click', function(){
+                $('#addmodal').modal('show');
                     $tr = $(this).closest('tr');
                     
                     var data = $tr.children("td").map(function(){
@@ -200,10 +250,28 @@
 
                     console.log(data);
 
-                    $('#case_no').val(data[0]);
+                    $('#case_no').val(data[1]);
             });
         });
     </script>
+
+    <script>
+        $(document).ready(function(){
+            $('.previewbtn').on('click', function(){
+                $('#previewmodal').modal('show');
+                    $tr = $(this).closest('tr');
+                    
+                    var data = $tr.children("td").map(function(){
+                        return $(this).text();
+                    }).get();
+
+                    console.log(data);
+
+                    $('#case_no').val(data[1]);
+            });
+        });
+    </script>
+
 
     <!-- <script src="<?php echo base_url(); ?>assets/js/jquery-1.11.1.js"></script> -->
     <script>
@@ -238,7 +306,7 @@
                 else{
                     $('#first_paragraph').prop('disabled', false);
                     $.ajax({
-                        url:"<?php echo base_url() ?>nurse/getparagraph",
+                        url:"<?php echo base_url() ?>nurse/getparagraphfirst",
                         type: "POST",
                         data: {'subcategory_id' : subcategory_id},
                         dataType: 'json',
@@ -252,76 +320,71 @@
                 }
             });
 
-            // $('#or_subcategory').on('change', function(){
-            //     var subcategory_id = $($this).val();
-            //     if(subcategory_id == ''){
-            //         $('#first_paragraph').prop('disabled', true);
-            //     }
-            //     else{
-            //         $('#first_paragraph').prop('disabled', false);
-            //         $.ajax({
-            //             url:"<?php echo base_url() ?>nurse/getparagraph",
-            //             type: "POST",
-            //             data: {'subcategory_id' : subcategory_id},
-            //             dataType: "JSON",
-            //             success: function(data){
-            //                 $('#first_paragraph').html(data);
-            //             }
-            //             error: function(){
-            //                 alert("Please select sub category");
-            //             }
-            //         });
-            //     }
-            // });
+            $('#or_subcategory').on('change', function(){
+                var subcategory_id = $(this).val();
+                if(subcategory_id == ''){
+                    $('#second_paragraph').prop('disabled', true);
+                }
+                else{
+                    $('#second_paragraph').prop('disabled', false);
+                    $.ajax({
+                        url:"<?php echo base_url() ?>nurse/getparagraphsecond",
+                        type: "POST",
+                        data: {'subcategory_id' : subcategory_id},
+                        dataType: 'json',
+                        success: function(data){
+                            $('#second_paragraph').html(data);
+                        },
+                        error: function(){
+                            alert('Error occur ... !!!');
+                        }
+                    });
+                }
+            });
 
+            $('#or_subcategory').on('change', function(){
+                var subcategory_id = $(this).val();
+                if(subcategory_id == ''){
+                    $('#third_paragraph').prop('disabled', true);
+                }
+                else{
+                    $('#third_paragraph').prop('disabled', false);
+                    $.ajax({
+                        url:"<?php echo base_url() ?>nurse/getparagraphthird",
+                        type: "POST",
+                        data: {'subcategory_id' : subcategory_id},
+                        dataType: 'json',
+                        success: function(data){
+                            $('#third_paragraph').html(data);
+                        },
+                        error: function(){
+                            alert('Error occur ... !!!');
+                        }
+                    });
+                }
+            });
 
-
-        //     $('#or_subcategory').on('change', function(){
-        //         var subcategory_id = $(this).val();
-        //         if(subcategory_id == ''){
-        //             $('#first_paragraph').prop('disabled', true);
-        //         }
-        //         else{
-        //             $('#first_paragraph').prop('disabled', false);
-        //             $.ajax({
-        //                 url:"<?php echo base_url() ?>nurse/getparagraph",
-        //                 type: "POST",
-        //                 data: {'subcategory_id' : subcategory_id},
-        //                 dataType: 'json',
-        //                 success: function(response){
-        //                     $('#first_paragraph').html(response.first_paragraph);
-        //                 }
-        //             });
-        //         }
-        //     });
+            $('#or_subcategory').on('change', function(){
+                var subcategory_id = $(this).val();
+                if(subcategory_id == ''){
+                    $('#fourth_paragraph').prop('disabled', true);
+                }
+                else{
+                    $('#fourth_paragraph').prop('disabled', false);
+                    $.ajax({
+                        url:"<?php echo base_url() ?>nurse/getparagraphfourth",
+                        type: "POST",
+                        data: {'subcategory_id' : subcategory_id},
+                        dataType: 'json',
+                        success: function(data){
+                            $('#fourth_paragraph').html(data);
+                        },
+                        error: function(){
+                            alert('Error occur ... !!!');
+                        }
+                    });
+                }
+            });
         });
-        
-        
-        
     </script>
-
-    // <script>
-    //     $(document).ready(function(){
-    //         $('#or_subcatgory').on('change', function(){
-    //             var subcategory_id = $(this).val();
-    //             if (subcategory_id == ''){
-    //                 $('#1st_paragraph').prop('disabled', true);
-    //             }
-    //             else{
-    //                 $('#1st_paragraph').prop('disabled', false);
-    //                 $.ajax({
-    //                     type: "POST",
-    //                     url: "<?php echo base_url() ?>nurse/getparagraph",
-    //                     data: {
-    //                         'subcategory_id' : subcategory_id,
-    //                     },
-    //                     dataType: 'text',
-    //                     success: function(response){
-    //                         $('#1st_paragraph').html(response);
-    //                     }
-    //                 });
-    //             }
-    //         });
-    //     });
-    // </script>
 </html>
