@@ -101,7 +101,7 @@
                                 <button type="button" class="btn btn-success addbtn" data-toggle="modal" data-target="#exampleModal">Add</button>
                             </div>
                             <div class="content table-responsive table-full-width">
-                                <table class="table table-hover table-striped">
+                                <table class="table table-hover table-striped ortech">
                                     <thead>
                                         <th>Id</th>
                                     	<th>Case No.</th>
@@ -110,7 +110,6 @@
                                     </thead>
                                     <?php $i=1; ?>
                                     <?php foreach($patient_info as $row): ?>
-                                    
                                     <tbody>
                                         <tr>
                                             <td><?php echo $i; ?></td>
@@ -195,28 +194,29 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form>
+      <form action="">
         <div class="modal-body">
             <div class="form-group">
                 <label>Case No.:</label>
-                <input type="text" class="form-control" name="case_no" id="case_no">
+                <input type="text" class="form-control" name="case_no_preview" id="case_no_preview">
             </div>
             <div class="form-group">
                 <label>OR Category:</label>
-                <input type="text" class="form-control" name="or_category" id="or_category">
+                <input type="text" class="form-control" name="or_category_preview" id="or_category_preview">
             </div>
             <div class="form-group">
                 <label>OR Sub-Category:</label>
-                <input type="text" class="form-control" name="or_subcategory" id="or_subcategory">
+                <input type="text" class="form-control" name="or_subcategory_preview" id="or_subcategory_preview">
             </div>
             <div class="form-group">
                 <textarea name="paragraph" id="paragraph" rows="30" class="form-control"></textarea>
             </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" value="save">Save</button>
+            </div>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary" value="save">Save</button>
-      </div>
       </form>
     </div>
   </div>
@@ -242,15 +242,6 @@
         $(document).ready(function(){
             $('.addbtn').on('click', function(){
                 $('#addmodal').modal('show');
-                    $tr = $(this).closest('tr');
-                    
-                    var data = $tr.children("td").map(function(){
-                        return $(this).text();
-                    }).get();
-
-                    console.log(data);
-
-                    $('#case_no').val(data[1]);
             });
         });
     </script>
@@ -259,19 +250,19 @@
         $(document).ready(function(){
             $('.previewbtn').on('click', function(){
                 $('#previewmodal').modal('show');
+
                     $tr = $(this).closest('tr');
-                    
+
                     var data = $tr.children("td").map(function(){
                         return $(this).text();
                     }).get();
 
                     console.log(data);
 
-                    $('#case_no').val(data[1]);
+                    $('#case_no_preview').val(data[1]);
             });
         });
     </script>
-
 
     <!-- <script src="<?php echo base_url(); ?>assets/js/jquery-1.11.1.js"></script> -->
     <script>
@@ -387,4 +378,27 @@
             });
         });
     </script>
+    <!-- <script>
+        $(document).ready(function(){
+                var case_no = $(this).val();
+                if(case_no == ''){
+                    $('#or_category_preview').prop('disabled', true);
+                }
+                else{
+                    $('#or_category_preview').prop('disabled', false);
+                    $.ajax({
+                        url:"<?php echo base_url() ?>nurse/viewortech",
+                        type: "POST",
+                        data: {'case_no_preview' : case_no},
+                        dataType: 'json',
+                        success: function(data){
+                            $('#or_category_preview').html(data);
+                        },
+                        error: function(){
+                            alert('Error occur ... !!!');
+                        }
+                    });
+                }
+        });
+    </script> -->
 </html>

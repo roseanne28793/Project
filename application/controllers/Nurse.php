@@ -158,9 +158,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             redirect('Nurse/ortech');
         }
 
-        public function previewortech(){
-            // $this->nursemodel->previewortech();
-            // red
-        }
+        // public function previewortech(){
+        //     $case_no = $this->input->post('caseno');
+        //     $patient_ortech = $this->nursemodel->previewpatientortech($case_no);
+        //     if(count($patient_ortech)>0){
+        //         $pro_select_box = '';
+        //         foreach ($opatient_ortech as $row){
+        //             $pro_select_box .= $row->category_id;
+        //         }
+        //         echo json_encode($pro_select_box);
+        //     }
+        // }
+
+        // public function viewortech($case_no){
+        //     $case_no = $this->input->post('case_no_preview');
+        //     $patient_ortech= $this->nursemodel->getdataortech($case_no);
+        //     if (count($patient_ortech)>0){
+        //         $caseno = '';
+        //         foreach ($patient_ortech as $row){
+        //             $caseno .= $row->category_id;
+        //         }
+        //         echo json_encode($caseno);
+        //     }
+        //     // $data['row'] = $this->nursemodel->getdataortech($case_no);
+        //     // $this->load->view('ortech', $data);
+        // }
     }
 ?>

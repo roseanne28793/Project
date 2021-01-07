@@ -171,9 +171,16 @@ class nursemodel extends CI_Model{
         $this->db->insert('patient_ortech', $data);
     }
 
-    public function previewpatientortech(){
-        $query = $this->db->get_where('patient_ortech', array('case_no' => $case_no));
-        return $query->result();
-    }
+    // public function previewpatientortech(){
+    //     $query = $this->db->get_where('patient_ortech', array('caseno' => $case_no));
+    //     return $query->result();
+    // }
+
+    // public function getdataortech($case_no){
+    //     // $query = $this->db->get_where('patient_ortech', array('caseno_preview' => $case_no));
+    //     // return $query->result();
+    //     $query = $this->db->get_where('patient_ortech', array('case_no_preview' => $case_no));
+    //     return $query->result();
+    // }
 }
 ?>
